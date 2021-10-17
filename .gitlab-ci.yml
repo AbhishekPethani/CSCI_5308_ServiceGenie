@@ -7,12 +7,12 @@ stages:
 
 build:
   stage: build
-  tags: ["dalfcs_docker_kvm"]
+  tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
   script: 
       - "mvn compile"
 Test:
   stage: Test
-  tags: ["dalfcs_docker_kvm"]
+  tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
   script:
     - "mvn test"
     - "mvn package"
@@ -26,7 +26,7 @@ Test:
         - target/surefire-reports/TEST-*.xml
 deploy:
     stage: deploy
-    tags: ["dalfcs_docker_kvm"]
+    tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
     image: alpine:3.11
     before_script:
         - apk update && apk add openssh-client bash
