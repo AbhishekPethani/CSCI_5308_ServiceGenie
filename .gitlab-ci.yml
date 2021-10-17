@@ -1,0 +1,45 @@
+image: maven:latest
+
+stages:
+  - build
+  - Test
+  - deploy
+
+build:
+  stage: build
+  tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
+  script: 
+      - "mvn compile"
+Test:
+  stage: Test
+  tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
+  script:
+    - "mvn test"
+    - "mvn package"
+  artifacts:
+    expire_in: 1 week
+    paths:
+       - target/MyApp.jar
+    when: always
+    reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
+deploy:
+    stage: deploy
+    tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
+    image: alpine:3.11
+    before_script:
+        - apk update && apk add openssh-client bash
+        - mkdir -p ~/.ssh
+        - eval $(ssh-agent -s)
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+        - touch ~/.ssh/config
+        - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        - ssh-keyscan -H $Staging_Server >> ~/.ssh/known_hosts
+    script:
+        - echo "Deploying..."
+        - ssh ubuntu@$Staging_Server "sudo systemctl stop MyApp.service"
+        - scp target/MyApp.jar ubuntu@$Staging_Server:~/MyApp/
+        - ssh ubuntu@$Staging_Server "sudo systemctl start MyApp.service"
+        - echo "Deployment Done"
+
