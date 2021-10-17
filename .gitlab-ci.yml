@@ -65,7 +65,7 @@ deploy-to-production:
         - ssh-keyscan -H $Production_Server >> ~/.ssh/known_hosts
     script:
         - echo "Deploying to Production Server..."
-        - ssh ubuntu@$Production_Server "sudo systemctl stop MyApp.service"
+        - ssh ec2-user@$Production_Server "sudo systemctl stop MyApp.service"
         - scp target/MyApp.jar ubuntu@$Production_Server:~/MyApp/
-        - ssh ubuntu@$Production_Server "sudo systemctl start MyApp.service"
+        - ssh ec2-user@$Production_Server "sudo systemctl start MyApp.service"
         - echo "Deployment on Production Server Completed"
