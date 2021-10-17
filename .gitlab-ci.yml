@@ -66,6 +66,6 @@ deploy-to-production:
     script:
         - echo "Deploying to Production Server..."
         - ssh ec2-user@$Production_Server "sudo systemctl stop MyApp.service"
-        - scp target/MyApp.jar ubuntu@$Production_Server:~/MyApp/
+        - scp target/MyApp.jar ec2-user@$Production_Server:~/MyApp/
         - ssh ec2-user@$Production_Server "sudo systemctl start MyApp.service"
         - echo "Deployment on Production Server Completed"
