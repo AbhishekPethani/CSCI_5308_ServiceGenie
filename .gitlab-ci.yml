@@ -6,12 +6,16 @@ stages:
   - deploy
 
 build:
+  only:
+    - merge_requests
   stage: build
   tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
   script: 
       - "mvn compile"
 Test:
   stage: Test
+  only:
+    - merge_requests
   tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
   script:
     - "mvn test"
@@ -25,6 +29,8 @@ Test:
       junit:
         - target/surefire-reports/TEST-*.xml
 deploy:
+    only:
+      - merge_requests
     stage: deploy
     tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
     image: alpine:3.11
