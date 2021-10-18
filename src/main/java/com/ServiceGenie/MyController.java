@@ -9,7 +9,7 @@ public class MyController {
 
 	@GetMapping("/hello")
 	public String HelloWorld() {
-		return "Hello Group 19, Welcome to MACS program , Lets get started";
+		return "Hello Group 19, Welcome to MACS program , Good MOrning";
 	}
 
 }
