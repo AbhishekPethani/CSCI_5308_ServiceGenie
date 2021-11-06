@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+<h2>Register as : </h2>
+
+
+<h2>Customer : </h2>
+<form action="/RegisterAsCustomer" method="post">
+  <label>USER ID:</label><br>
+  <input type="text" id="customer-userid" name="customer-userid" placeholder="Your EmailId"><br>
+  <label>Password:</label><br>
+  <input type="password" id="customer-password" name="customer-password" ><br>
+  <label>Re-enter Password to Confirm :</label><br>
+  <input type="password" id="confirm-customer-password" name="confirm-customer-password" ><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<h2>Service Provider : </h2>
+<form action="/RegisterAsServiceProvider" method="post">
+  <label>USER ID:</label><br>
+  <input type="text" id="service-provider-userid" name="service-provider-userid" placeholder="Your EmailId"><br>
+  <label>Password:</label><br>
+  <input type="password" id="service-provider-password" name="service-provider-password" ><br>
+  <label>Re-enter Password to Confirm :</label><br>
+  <input type="password" id="confirm-service-provider-password" name="service-provider-password" ><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<h2>ADMIN : </h2>
+<form action="/admin-authentication" method="post">
+  <label>USER ID:</label><br>
+  <input type="text" id="customer-userid" name="customer-userid"><br>
+  <label>Password:</label><br>
+  <input type="password" id="password" name="password" ><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
