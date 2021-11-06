@@ -1,4 +1,4 @@
-package com.servicegenie;
+package com.ServiceGenie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
