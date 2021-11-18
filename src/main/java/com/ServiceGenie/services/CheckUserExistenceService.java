@@ -3,10 +3,6 @@ package com.servicegenie.services;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
 
 @Service
