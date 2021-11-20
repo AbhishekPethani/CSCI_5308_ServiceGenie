@@ -44,10 +44,7 @@ public class ViewServicesByServiceProviderService {
 		return listOfLists;
 	}
 	
-	/**
-	 * @return
-	 * @throws SQLException
-	 */
+	
 	public List<String> getListOfServiceProviders() throws SQLException
 	{
 		ResultSet rs = this.services.getListOfServiceProviders();
