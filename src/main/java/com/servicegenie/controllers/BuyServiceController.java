@@ -20,11 +20,12 @@ public class BuyServiceController {
 
     @GetMapping("/user/services")
     public String getServices(Model model) throws SQLException {
-        System.out.println("Server Hit");
+        //System.out.println("Server Hit");
+
         List<Service> serviceList = new ArrayList<>();
-        serviceList=buyServiceService.getAllService();
+        serviceList = buyServiceService.getAllService();
         model.addAttribute("serviceList",serviceList);
-        System.out.println(serviceList);
+        //System.out.println(serviceList);
         return "BuyNewService";
     }
 
