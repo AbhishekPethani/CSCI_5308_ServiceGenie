@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Service Genie</title>
+  <link th:href="@{/public/bootstrap.min.css}" rel="stylesheet">
+  <style>
+h1 {
+	text-align: center;
+}
+</style>
+  <script>
+	function alert() {
+		var txt;
+		if (confirm("Delete question")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+  </script>
+</head>
+<body>
+
+<!--<div th:replace="fragments/courseheader :: header"></div>-->
+<br>
+<div class="container">
+
+  <h1>Buy Service</h1>
+  <br>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">price</th>
+      <th scope="col">Buy</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form th:each="service: ${serviceList}" method="get">
+
+      <tr>
+        <td th:text="${service.serviceName}" />
+        <td th:text="${service.serviceDescription}" />
+        <td th:text="${service.servicePrice}" />
+
+    <input type="hidden" th:value="${service.serviceID}" name="id" />
+
+    <td><input type="submit" value="Buy"
+               class="btn btn-success" /></td>
+
+      </tr>
+    </form>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>
