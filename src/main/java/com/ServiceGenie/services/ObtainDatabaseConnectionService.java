@@ -10,7 +10,7 @@ public class ObtainDatabaseConnectionService
 {
 	Connection connect = null;
 	
-	//Fucntion to establish connection , The function returns the connection object which denotes the successful connection with database
+	//Function to establish connection , The function returns the connection object which denotes the successful connection with database
 	public Connection GetMyConnection() throws SQLException
 	{
 	try

@@ -19,14 +19,17 @@
 
 <hr>
 
-
-
-<table id="serviceTable" border="1" th:each="service :${services}">
-<tr  >
-<td th:each="list :${service}"th:text="${list}" th:remove="tag"></td>
+<table id="serviceTable" border="1" >
+  <tr>
+    <th>ServiceID</th>
+    <th>ServiceProviderID</th>
+    <th>ServiceName</th>
+    <th>ServiceDescription</th>
+    <th>ServicePrice</th>
+  </tr>
+<tr th:each="service :${services}">
+	<td th:each="list :${service}" th:text="${list}" ></td>
 </tr  >
 </table>
-
-
 </body>
 </html>

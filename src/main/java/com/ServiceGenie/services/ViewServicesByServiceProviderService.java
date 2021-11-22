@@ -27,18 +27,16 @@ public class ViewServicesByServiceProviderService {
 	public List<ArrayList<String>> getServiceDetails(String serviceProvider , ModelMap model) throws SQLException {
 		ResultSet rs = this.services.getServicesByServiceProvider(serviceProvider);
 		List<ArrayList<String>> listOfLists = new ArrayList<ArrayList<String>>();
-		ArrayList<String> list1 = new ArrayList<String>();
+		
 		while(rs.next())
 		{
-			System.out.println(rs.getString("ServiceID"));
+			ArrayList<String> list1 = new ArrayList<String>();
 			list1.add(rs.getString("ServiceID"));
 			list1.add(rs.getString("ServiceProviderID"));
 			list1.add(rs.getString("ServiceName"));
 			list1.add(rs.getString("ServiceDescription"));
 			list1.add(rs.getString("ServicePrice"));
 			listOfLists.add(list1);
-
-			System.out.println(listOfLists);
 		}
 		
 		return listOfLists;
