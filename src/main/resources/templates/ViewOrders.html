@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h2 style="text-align:center";>View Orders</h2>
+
+<form action="/ViewAllOrders" method="post">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="View All Orders">
+</div>
+</form>
+
+<form action="/ViewOrdersByServiceProvider?service_providerId=" method="post">
+
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="service_providerId" class="form-control" id="serviceProviderId" >
+    <option value="0">Select Service Provider</option>
+
+            <option th:each="serviceprovider : ${serviceProviders}"
+                th:value="${serviceprovider}"
+                th:text="${serviceprovider}"></option>
+    </select>
+    <input type="submit" value="Show Orders">
+</div>
+</form>
+
+<form action="/ViewOrdersByCustomer?customer_Id=" method="post">
+
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="customer_Id" class="form-control" id="customer_Id" >
+    <option value="0">Select Customer Id</option>
+
+            <option th:each="customer : ${customers}"
+                th:value="${customer}"
+                th:text="${customer}"></option>
+    </select>
+    <input type="submit" value="Show Orders">
+</div>
+</form>
+
+<hr>
+
+<table id="serviceTable" border="1" th:each="service :${services}">
+<tr  >
+<td th:each="list :${service}"th:text="${list}" ></td>
+</tr  >
+</table>
+
+
+<table id="serviceTable" border="1" >
+  <tr>
+    <th>Order ID</th>
+    <th>Customer ID</th>
+    <th>Service Provider ID</th>
+    <th>Order Amount</th>
+    <th>Order Date</th>
+    <th>Service Name</th>
+  </tr>
+<tr th:each="order :${orders}">
+	<td th:each="list :${order}" th:text="${list}" ></td>
+</tr  >
+</table>
+
+<table id="serviceTable" border="1" >
+  <tr>
+    <th>Order ID</th>
+    <th>Service Provider ID</th>
+    <th>Order Amount</th>
+    <th>Order Date</th>
+    <th>Service Name</th>
+  </tr>
+<tr th:each="order :${ordersbycustomer}">
+	<td th:each="list :${order}" th:text="${list}" ></td>
+</tr  >
+</table>
+
+<table id="serviceTable" border="1" >
+  <tr>
+    <th>Order ID</th>
+    <th>Customer ID</th>
+    <th>Order Amount</th>
+    <th>Order Date</th>
+    <th>Service Name</th>
+  </tr>
+<tr th:each="order :${ordersbyserviceprovider}">
+	<td th:each="list :${order}" th:text="${list}" ></td>
+</tr  >
+</table>
+
+</body>
+</html>
