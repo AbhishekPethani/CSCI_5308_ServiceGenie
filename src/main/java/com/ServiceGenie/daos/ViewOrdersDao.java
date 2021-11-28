@@ -13,36 +13,41 @@ public class ViewOrdersDao {
 	
 	public ViewOrdersDao() throws SQLException {
 		// TODO Auto-generated constructor stub
-		this.sql = this.MyDBConnect.GetMyConnection().createStatement();	
+		this.sql = this.MyDBConnect.getMyConnection().createStatement();	
 	}
 	
 	public ResultSet getCustomersId() throws SQLException {
 		String query = "SELECT Customer_Email from customer_details;";
 		ResultSet rs = this.sql.executeQuery(query);
+		MyDBConnect.terminateConnection(MyDBConnect);
 		return rs;
 	}
 	
 	public ResultSet getServiceProviderId() throws SQLException {
 		String query = "SELECT ServiceProviderID from service_provider_details ;";
 		ResultSet rs = this.sql.executeQuery(query);
+		MyDBConnect.terminateConnection(MyDBConnect);
 		return rs;
 	}
 	
 	public ResultSet getAllOrders() throws SQLException {
 		String query = "SELECT * from orders ;";
 		ResultSet rs = this.sql.executeQuery(query);
+		MyDBConnect.terminateConnection(MyDBConnect);
 		return rs;
 	}
 	
 	public ResultSet getOrdersByServiceProvider(String serviceProvider) throws SQLException {
 		String query = "SELECT * from orders where service_provider_id = '"+serviceProvider+"' ;";
 		ResultSet rs = this.sql.executeQuery(query);
+		MyDBConnect.terminateConnection(MyDBConnect);
 		return rs;
 	}
 	
 	public ResultSet getOrdersByCustomer(String customer_id) throws SQLException {
 		String query = "SELECT * from orders where customer_id = '"+customer_id+"' ;";
 		ResultSet rs = this.sql.executeQuery(query);
+		MyDBConnect.terminateConnection(MyDBConnect);
 		return rs;
 	}
 	

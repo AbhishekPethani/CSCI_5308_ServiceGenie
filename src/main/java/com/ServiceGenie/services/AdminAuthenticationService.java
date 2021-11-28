@@ -1,6 +1,7 @@
 package com.servicegenie.services;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 import org.springframework.stereotype.Service;
@@ -9,11 +10,15 @@ import org.springframework.ui.ModelMap;
 
 import com.servicegenie.daos.AdminDao;
 
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 @Service
 public class AdminAuthenticationService {
 	
 	
-	public String ValidateUser(String myUser , String myPass, ModelMap model) throws SQLException
+	public String validateUser(String myUser , String myPass, ModelMap model) throws SQLException
 	{
 		AdminDao admindao = new AdminDao();
 		ResultSet result = admindao.getAdminCredentials();
@@ -28,7 +33,7 @@ public class AdminAuthenticationService {
 				return "AdminHomePage.html";
 			}
 		}
-		return "redirect:LoginFailed.html";
+		return "LoginFailed.html";
 	}
 	
 	public ModelMap getModelAttributes(ModelMap model) throws SQLException {

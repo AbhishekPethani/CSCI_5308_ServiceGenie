@@ -15,8 +15,8 @@ public class ServiceProviderAuthenticationController {
 	@Autowired
 	private ServiceProviderAuthenticationService serviceproviderauthentication;
 	@RequestMapping(method = RequestMethod.POST , value = "/service-provider-authentication")
-	public String ValidateUser(@RequestParam("service-provider-userid")String userID, @RequestParam("password") String password) throws SQLException
+	public String validateUser(@RequestParam("service-provider-userid")String userID, @RequestParam("password") String password) throws SQLException
 	{
-		return serviceproviderauthentication.ValidateUser(userID, password);
+		return serviceproviderauthentication.validateUser(userID, password);
 	}
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegisterNewUserController {
 	
 	@RequestMapping(value = "/RegisterNewUser" , method = RequestMethod.GET)
-	public String RegisterANewUser()
+	public String registerANewUser()
 	{
 		return "NewRegistration.html";
 	}

@@ -15,7 +15,7 @@ public class AddServiceController {
 	private AddServiceService addService;
 	
 	@RequestMapping(method = RequestMethod.POST , value = "/add-service")
-	public String AddNewService(@RequestParam("service-name")String serviceName, @RequestParam("service-description")String serviceDescription, @RequestParam("service-price")String servicePrice) throws SQLException {
+	public String addNewService(@RequestParam("service-name")String serviceName, @RequestParam("service-description")String serviceDescription, @RequestParam("service-price")String servicePrice) throws SQLException {
 		
 		return addService.addService(serviceName, serviceDescription, servicePrice);
 		

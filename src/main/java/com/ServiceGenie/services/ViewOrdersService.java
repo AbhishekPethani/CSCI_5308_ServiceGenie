@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 import com.servicegenie.daos.ViewOrdersDao;
 import com.servicegenie.daos.ViewServicesByServiceProviderDao;
 
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
+//Class to facilitate the functionality of viewing orders
 @Service
 public class ViewOrdersService {
 	
@@ -21,6 +26,8 @@ public class ViewOrdersService {
 		this.orders = orders;
 		}
 	
+	
+	//Function to get the list of service providers which will be used to populate the dropdown menu
 	public List<String> getListOfServiceProviders() throws SQLException
 	{
 		ResultSet rs = this.orders.getServiceProviderId();
@@ -33,6 +40,8 @@ public class ViewOrdersService {
 		return uniqueServiceProviders;
 	}
 	
+	
+	//Function to get the list of customers providers which will be used to populate the dropdown menu
 	public List<String> getListOfCustomers() throws SQLException
 	{
 		ResultSet rs = this.orders.getCustomersId();
@@ -45,6 +54,8 @@ public class ViewOrdersService {
 		return uniquecustomers;
 	}
 	
+	
+	//Function to get all the orders
 	public List<ArrayList<String>> getAllOrders() throws SQLException
 	{
 		ResultSet rs = this.orders.getAllOrders();
@@ -67,6 +78,8 @@ public class ViewOrdersService {
 		return listOforders;
 	}
 	
+	
+	//Function to get all the orders based on the Service Provider
 	public List<ArrayList<String>> viewOrdersByServiceProviders(String serviceProvider) throws SQLException
 	{
 		List<ArrayList<String>> listOforders = new ArrayList<ArrayList<String>>();
@@ -88,6 +101,8 @@ public class ViewOrdersService {
 
 	}
 	
+	
+	//Function to get all the orders based on the customerID
 	public List<ArrayList<String>> viewOrdersByCustomer(String customerid) throws SQLException
 	{
 		List<ArrayList<String>> listOforders = new ArrayList<ArrayList<String>>();

@@ -24,9 +24,9 @@ public class AdminAuthenticationController {
 	private AdminAuthenticationService AdminAuth;
 		
 	@RequestMapping(method = RequestMethod.POST , value = "/admin-authentication")
-	public String ValidateUser(@RequestParam("admin-userid")String myUser , @RequestParam("password") String myPass,ModelMap model) throws SQLException
+	public String validateUser(@RequestParam("admin-userid")String myUser , @RequestParam("password") String myPass,ModelMap model) throws SQLException
 	{   
-		return AdminAuth.ValidateUser(myUser, myPass, model);
+		return AdminAuth.validateUser(myUser, myPass, model);
 	}    
 
 }  

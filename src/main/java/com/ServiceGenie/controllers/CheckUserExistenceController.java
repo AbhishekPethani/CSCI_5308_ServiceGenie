@@ -11,9 +11,9 @@ import com.servicegenie.services.CheckUserExistenceService;
 public class CheckUserExistenceController {
 	@Autowired
 	private CheckUserExistenceService checkuserexistenceservice;
-	public boolean CheckDatabase(String userId , String userType) throws SQLException {
+	public boolean checkDatabase(String userId , String userType) throws SQLException {
 		
-		return checkuserexistenceservice.CheckDatabase(userId, userType);
+		return checkuserexistenceservice.checkDatabase(userId, userType);
 		
 	}
 }

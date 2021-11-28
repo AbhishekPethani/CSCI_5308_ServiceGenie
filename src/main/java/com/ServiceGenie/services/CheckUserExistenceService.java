@@ -1,19 +1,24 @@
 package com.servicegenie.services;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 import org.springframework.stereotype.Service;
+
+//Author
+//Kandarp Sharad Parikh
+//B00873863
 
 @Service
 //Class to check if the User Already exists at the time of registration
 public class CheckUserExistenceService {
 	
-	public boolean CheckDatabase(String userId , String userType) throws SQLException {
+	public boolean checkDatabase(String userId , String userType) throws SQLException {
 		
 		//Establish Database connection and check retrieve all the usersIds and their Types
 		ObtainDatabaseConnectionService dbconnect = new ObtainDatabaseConnectionService();
-		Statement sql = dbconnect.GetMyConnection().createStatement();
+		Statement sql = dbconnect.getMyConnection().createStatement();
 		ResultSet result = sql.executeQuery("Select User_ID,User_Type from user_authentication;"); 
 
 		//Check if the user already exists of the specific type

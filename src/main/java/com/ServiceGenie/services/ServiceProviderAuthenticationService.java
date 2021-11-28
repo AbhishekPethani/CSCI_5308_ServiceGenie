@@ -6,10 +6,15 @@ import java.sql.Statement;
 import org.springframework.stereotype.Service;
 import com.servicegenie.ObtainDatabaseConnection;
 
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
+
 @Service
 public class ServiceProviderAuthenticationService {
 	
-	public String ValidateUser(String userID , String password) throws SQLException
+	public String validateUser(String userID , String password) throws SQLException
 	{
 		// Obtain Database connection and get customer details for authentication
 		ObtainDatabaseConnection MyDBConnect = new ObtainDatabaseConnection();
@@ -23,9 +28,9 @@ public class ServiceProviderAuthenticationService {
 		{
 			if(result.getString("User_ID").equals(userID) && result.getString("User_Password").equals(password))
 			{
-				return "redirect:ServiceProviderHomePage.html";
+				return "ServiceProviderHomePage.html";
 			}
 		}
-		return "redirect:LoginFailed.html";
+		return "LoginFailed.html";
 	}
 }

@@ -5,18 +5,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import org.springframework.stereotype.Service;
 
+import com.servicegenie.daos.AuthenticationDao;
+
+//Author
+//Kandarp Sharad Parikh
+//B00873863
 
 // Class for Authenticating Customer credentials at the time of login
 @Service
 public class CustomerAuthenticationService {
 
-	public String ValidateUser(String myUser ,String myPass) throws SQLException
+	public String validateUser(String myUser ,String myPass) throws SQLException
 	{
-		
-		// Obtain Database connection and get customer details for authentication
-		ObtainDatabaseConnectionService MyDBConnect = new ObtainDatabaseConnectionService();
-		Statement sql = MyDBConnect.GetMyConnection().createStatement();
-		ResultSet result = sql.executeQuery("Select * from user_authentication where User_Type='customer';");
+		//Get the results from DAO
+		AuthenticationDao authenticate = new AuthenticationDao();
+		ResultSet result = authenticate.getCustomerCredentials();
 		
 		// Check if userid and password entered matches or not
 		// If the userId and password matches the user will be redirected to Customer Home page
@@ -25,9 +28,9 @@ public class CustomerAuthenticationService {
 		{
 			if(result.getString("User_ID").equals(myUser) && result.getString("User_Password").equals(myPass))
 			{
-				return "redirect:UserHomePage.html";
+				return "UserHomePage.html";
 			}
 		}
-		return "redirect:LoginFailed.html";
+		return "LoginFailed.html";
 	}
 }
