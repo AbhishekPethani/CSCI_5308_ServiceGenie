@@ -14,6 +14,11 @@ import org.springframework.ws.wsdl.wsdl11.provider.ServicesProvider;
 import com.servicegenie.daos.AdminDao;
 import com.servicegenie.daos.ViewServicesByServiceProviderDao;
 
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
+//Class to view the services 
 @Service
 public class ViewServicesByServiceProviderService {
 	
@@ -24,21 +29,20 @@ public class ViewServicesByServiceProviderService {
 		this.services = services;
 		}
 	
+	//Function to get all the service details based on the service provider
 	public List<ArrayList<String>> getServiceDetails(String serviceProvider , ModelMap model) throws SQLException {
 		ResultSet rs = this.services.getServicesByServiceProvider(serviceProvider);
 		List<ArrayList<String>> listOfLists = new ArrayList<ArrayList<String>>();
-		ArrayList<String> list1 = new ArrayList<String>();
+		
 		while(rs.next())
 		{
-			System.out.println(rs.getString("ServiceID"));
+			ArrayList<String> list1 = new ArrayList<String>();
 			list1.add(rs.getString("ServiceID"));
 			list1.add(rs.getString("ServiceProviderID"));
 			list1.add(rs.getString("ServiceName"));
 			list1.add(rs.getString("ServiceDescription"));
 			list1.add(rs.getString("ServicePrice"));
 			listOfLists.add(list1);
-
-			System.out.println(listOfLists);
 		}
 		
 		return listOfLists;

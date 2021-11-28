@@ -5,13 +5,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
+//Author
+//Kandarp Sharad Parikh
+//B00873863
 
 public class ObtainDatabaseConnectionService
 {
 	Connection connect = null;
 	
-	//Fucntion to establish connection , The function returns the connection object which denotes the successful connection with database
-	public Connection GetMyConnection() throws SQLException
+	//Function to establish connection , The function returns the connection object which denotes the successful connection with database
+	public Connection getMyConnection() throws SQLException
 	{
 	try
 		{
@@ -30,9 +33,9 @@ public class ObtainDatabaseConnectionService
 
 	
 	// Function for terminating Database connection
-	public boolean TerminateConnection(ObtainDatabaseConnectionService MyConnection) throws SQLException
+	public boolean terminateConnection(ObtainDatabaseConnectionService MyConnection) throws SQLException
 	{
-		if (MyConnection.GetMyConnection().isClosed() == false)
+		if (MyConnection.getMyConnection().isClosed() == false)
 		{
 			MyConnection.connect.close();
 		}

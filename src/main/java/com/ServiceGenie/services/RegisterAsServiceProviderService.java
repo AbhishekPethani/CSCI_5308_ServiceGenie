@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class RegisterAsServiceProviderService {
 	
 	
-	public String RegisterAsAServiceProvider(String userID, String firstName, String lastName, String email, String contactNumber, String street, String apartmentNumber, String city, String zipcode, String province, String country, String category, String serviceDescription, String branchID, String password) throws SQLException
+	public String registerAsAServiceProvider(String userID, String firstName, String lastName, String email, String contactNumber, String street, String apartmentNumber, String city, String zipcode, String province, String country, String category, String serviceDescription, String branchID, String password) throws SQLException
 	{
 		// Creating instance of CheckUserExistence class to verify if the user of type service-provider is already present or not
 		// If the UserId is present in database, the user is redirected to Registration page with Error message
@@ -17,9 +17,9 @@ public class RegisterAsServiceProviderService {
 		
 		CheckUserExistenceService validation = new CheckUserExistenceService();
 		
-		if(validation.CheckDatabase(userID,"service-provider") == true)
+		if(validation.checkDatabase(userID,"service-provider") == true)
 		{
-			return "redirect:RegistrationFailed.html";
+			return "RegistrationFailed.html";
 		}
 		
 		ObtainDatabaseConnectionService dbconnect = new ObtainDatabaseConnectionService();
@@ -34,7 +34,7 @@ public class RegisterAsServiceProviderService {
 		
 		String insertAuthenticationDetailQuery = "insert into user_authentication (User_ID, User_Password, User_Type) values (?, ?, ?)"; 
 		
-		PreparedStatement MyPreparedStatement = dbconnect.GetMyConnection().prepareStatement(insertServiceProviderQuery);
+		PreparedStatement MyPreparedStatement = dbconnect.getMyConnection().prepareStatement(insertServiceProviderQuery);
 	    MyPreparedStatement.setString (1, userID);
 	    MyPreparedStatement.setString (2, firstName);
 	    MyPreparedStatement.setString (3, lastName);
@@ -52,13 +52,13 @@ public class RegisterAsServiceProviderService {
 	    MyPreparedStatement.setString (15, branchID);
 	    MyPreparedStatement.execute();
 
-	    MyPreparedStatement = dbconnect.GetMyConnection().prepareStatement(insertAuthenticationDetailQuery);
+	    MyPreparedStatement = dbconnect.getMyConnection().prepareStatement(insertAuthenticationDetailQuery);
 	    MyPreparedStatement.setString (1, userID);
 	    MyPreparedStatement.setString (2, password);
 	    MyPreparedStatement.setString (3, "service-provider");
 	    MyPreparedStatement.execute();
 	    
-		return "redirect:SuccessfulRegistration.html";
+		return "SuccessfulRegistration.html";
 		
 	}
 

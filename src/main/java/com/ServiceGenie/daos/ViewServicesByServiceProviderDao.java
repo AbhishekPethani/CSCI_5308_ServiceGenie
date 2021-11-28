@@ -14,17 +14,19 @@ public class ViewServicesByServiceProviderDao {
 	
 	public ViewServicesByServiceProviderDao() throws SQLException {
 		// TODO Auto-generated constructor stub
-		this.sql = this.MyDBConnect.GetMyConnection().createStatement();	
+		this.sql = this.MyDBConnect.getMyConnection().createStatement();	
 	}
 	
 	public ResultSet getServicesByServiceProvider(String serviceProvider) throws SQLException {
 		String query = "SELECT * from services_details where ServiceProviderID = '"+serviceProvider+"' ;";
 		ResultSet rs = this.sql.executeQuery(query);
+		MyDBConnect.terminateConnection(MyDBConnect);
 		return rs;
 	}
 	
 	public ResultSet getListOfServiceProviders() throws SQLException {
 		ResultSet rs = this.sql.executeQuery("SELECT ServiceProviderID from services_details ;");
+		MyDBConnect.terminateConnection(MyDBConnect);
 		return rs;
 	}
 		
