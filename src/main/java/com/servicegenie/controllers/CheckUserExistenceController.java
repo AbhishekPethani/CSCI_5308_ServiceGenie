@@ -13,7 +13,7 @@ public class CheckUserExistenceController {
 	private CheckUserExistenceService checkuserexistenceservice;
 	public boolean CheckDatabase(String userId , String userType) throws SQLException {
 		
-		return checkuserexistenceservice.CheckDatabase(userId, userType);
+		return checkuserexistenceservice.checkDatabase(userId, userType);
 		
 	}
 }

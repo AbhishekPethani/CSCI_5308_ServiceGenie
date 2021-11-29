@@ -13,9 +13,9 @@ public class RegisterAsCustomerService {
 	private RegisterAsCustomerService registerascustomerservice;
 	
 	@RequestMapping(value = "/RegisterAsCustomer", method = RequestMethod.POST)
-	public String RegisterAsACustomer(@RequestParam("customer-userid") String userId, @RequestParam("customer-password")String password) throws SQLException
+	public String registerAsACustomer(@RequestParam("customer-userid") String userId, @RequestParam("customer-password")String password) throws SQLException
 	{
-		return registerascustomerservice.RegisterAsACustomer(userId, password);
+		return registerascustomerservice.registerAsACustomer(userId, password);
 	}
 }
 

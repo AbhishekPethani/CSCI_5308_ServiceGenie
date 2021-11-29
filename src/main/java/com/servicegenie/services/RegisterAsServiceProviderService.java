@@ -17,7 +17,7 @@ public class RegisterAsServiceProviderService {
 		
 		CheckUserExistenceService validation = new CheckUserExistenceService();
 		
-		if(validation.CheckDatabase(userID,"service-provider") == true)
+		if(validation.checkDatabase(userID,"service-provider") == true)
 		{
 			return "redirect:RegistrationFailed.html";
 		}
@@ -34,7 +34,7 @@ public class RegisterAsServiceProviderService {
 		
 		String insertAuthenticationDetailQuery = "insert into user_authentication (User_ID, User_Password, User_Type) values (?, ?, ?)"; 
 		
-		PreparedStatement MyPreparedStatement = dbconnect.GetMyConnection().prepareStatement(insertServiceProviderQuery);
+		PreparedStatement MyPreparedStatement = dbconnect.getMyConnection().prepareStatement(insertServiceProviderQuery);
 	    MyPreparedStatement.setString (1, userID);
 	    MyPreparedStatement.setString (2, firstName);
 	    MyPreparedStatement.setString (3, lastName);
@@ -52,7 +52,7 @@ public class RegisterAsServiceProviderService {
 	    MyPreparedStatement.setString (15, branchID);
 	    MyPreparedStatement.execute();
 
-	    MyPreparedStatement = dbconnect.GetMyConnection().prepareStatement(insertAuthenticationDetailQuery);
+	    MyPreparedStatement = dbconnect.getMyConnection().prepareStatement(insertAuthenticationDetailQuery);
 	    MyPreparedStatement.setString (1, userID);
 	    MyPreparedStatement.setString (2, password);
 	    MyPreparedStatement.setString (3, "service-provider");

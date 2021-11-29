@@ -1,4 +1,4 @@
-package com.ServiceGenie.services;
+package com.servicegenie.services;
 
 import com.servicegenie.ObtainDatabaseConnection;
 import org.springframework.stereotype.Service;

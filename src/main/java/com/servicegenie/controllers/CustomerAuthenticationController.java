@@ -20,6 +20,6 @@ public class CustomerAuthenticationController {
 	@RequestMapping(method = RequestMethod.POST , value = "/customer-authentication")
 	public String ValidateUser(@RequestParam("customer-userid")String myUser , @RequestParam("customer-password") String myPass) throws SQLException
 	{
-		return customerauthenticationservice.ValidateUser(myUser, myPass);
+		return customerauthenticationservice.validateUser(myUser, myPass);
 	}
 }

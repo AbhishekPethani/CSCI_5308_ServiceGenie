@@ -9,7 +9,7 @@ import com.servicegenie.ObtainDatabaseConnection;
 @Service
 public class ServiceProviderAuthenticationService {
 	
-	public String ValidateUser(String userID , String password) throws SQLException
+	public String validateUser(String userID , String password) throws SQLException
 	{
 		// Obtain Database connection and get customer details for authentication
 		ObtainDatabaseConnection MyDBConnect = new ObtainDatabaseConnection();

@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerAuthenticationService {
 
-	public String ValidateUser(String myUser ,String myPass) throws SQLException
+	public String validateUser(String myUser ,String myPass) throws SQLException
 	{
 		
 		// Obtain Database connection and get customer details for authentication
 		ObtainDatabaseConnectionService MyDBConnect = new ObtainDatabaseConnectionService();
-		Statement sql = MyDBConnect.GetMyConnection().createStatement();
+		Statement sql = MyDBConnect.getMyConnection().createStatement();
 		ResultSet result = sql.executeQuery("Select * from user_authentication where User_Type='customer';");
 		
 		// Check if userid and password entered matches or not

@@ -11,7 +11,7 @@ public class ObtainDatabaseConnectionService
 	Connection connect = null;
 	
 	//Fucntion to establish connection , The function returns the connection object which denotes the successful connection with database
-	public Connection GetMyConnection() throws SQLException
+	public Connection getMyConnection() throws SQLException
 	{
 	try
 		{
@@ -30,9 +30,9 @@ public class ObtainDatabaseConnectionService
 
 	
 	// Function for terminating Database connection
-	public boolean TerminateConnection(ObtainDatabaseConnectionService MyConnection) throws SQLException
+	public boolean terminateConnection(ObtainDatabaseConnectionService MyConnection) throws SQLException
 	{
-		if (MyConnection.GetMyConnection().isClosed() == false)
+		if (MyConnection.getMyConnection().isClosed() == false)
 		{
 			MyConnection.connect.close();
 		}

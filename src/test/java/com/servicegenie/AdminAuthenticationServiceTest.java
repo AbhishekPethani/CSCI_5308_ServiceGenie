@@ -29,22 +29,22 @@ public class AdminAuthenticationServiceTest {
 	//Test to check that the return type of the validate User is String
 	@Test
 	void validateUserReturnTest() throws SQLException {
-		ModelMap Model = new ModelMap();
-		assertThat(AdminObj.validateUser("1", "Kandarp",Model) instanceof String);
+		ModelMap model = new ModelMap();
+		assertThat(AdminObj.validateUser("1", "Kandarp",model) instanceof String);
 	}
 	
 	//Test to check that login is successful for correct credentials
 	@Test
 	void validateUserLoginSucsessTest() throws SQLException {
 		ModelMap model = new ModelMap();
-		assertThat(AdminObj.validateUser("1", "Kandarp", model) == "AdminHomePage.html");
+		assertThat(AdminObj.validateUser("1", "Kandarp",model) == "AdminHomePage.html");
 	}
 	
 	//Test to check that login is unsuccessful for incorrect credentials
 	@Test
 	void validateUserLoginFailureTest() throws SQLException {
 		ModelMap model = new ModelMap();
-		assertThat(AdminObj.validateUser("1", "WrongPassword", model) == "redirect:LoginFailed.html");
+		assertThat(AdminObj.validateUser("1", "WrongPassword",model) == "redirect:LoginFailed.html");
 	}
 	
 	//Test to check that the ModelAttributes return the ModelMap object

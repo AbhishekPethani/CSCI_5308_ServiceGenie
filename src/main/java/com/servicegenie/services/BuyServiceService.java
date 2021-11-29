@@ -13,8 +13,8 @@ public class BuyServiceService {
 
     public List<Service> getAllService() throws SQLException {
         List<Service> serviceList = new ArrayList<>();
-        ObtainDatabaseConnection dbConnection = new ObtainDatabaseConnection();
-        Statement selectStatement = dbConnection.GetMyConnection().createStatement();
+        ObtainDatabaseConnectionService dbConnection = new ObtainDatabaseConnectionService();
+        Statement selectStatement = dbConnection.getMyConnection().createStatement();
         ResultSet resultSet = selectStatement.executeQuery("SELECT * FROM services_details;");
         while (resultSet.next()){
             String serviceID = resultSet.getString("ServiceID");
@@ -25,7 +25,7 @@ public class BuyServiceService {
             Service service = new Service(serviceID, serviceProviderID, serviceName, serviceDescription ,servicePrice);
             serviceList.add(service);
         }
-        dbConnection.TerminateConnection(dbConnection);
+        dbConnection.terminateConnection(dbConnection);
         return serviceList;
     }
 }
