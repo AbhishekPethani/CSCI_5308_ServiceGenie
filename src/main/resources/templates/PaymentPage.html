@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Service Genie</title>
+    <link th:href="@{/public/bootstrap.min.css}" rel="stylesheet">
+    <style>
+h1 {
+	text-align: center;
+}
+</style>
+    <script>
+	function alert() {
+		var txt;
+		if (confirm("Delete payment")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+  </script>
+</head>
+<body>
+
+<!--<div th:replace="fragments/courseheader :: header"></div>-->
+<br>
+<div class="container">
+
+    <h1>Payment Page</h1>
+    <br>
+
+</div>
+</body>
+</html>
