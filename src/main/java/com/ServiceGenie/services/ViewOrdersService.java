@@ -72,9 +72,7 @@ public class ViewOrdersService {
 			orders.add(rs.getString("service_name"));
 			System.out.println(orders);
 			listOforders.add(orders);
-			System.out.println(listOforders);
 		}
-		System.out.println(listOforders);
 		return listOforders;
 	}
 	
