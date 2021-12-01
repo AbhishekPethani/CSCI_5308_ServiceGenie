@@ -28,3 +28,25 @@ Test:
     reports:
       junit:
         - target/surefire-reports/TEST-*.xml
+
+deploy-to-production:
+    only:
+      - merge_requests
+    stage: deploy
+    tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
+    image: alpine:3.11
+    before_script:
+        - apk update && apk add openssh-client bash
+        - mkdir -p ~/.ssh
+        - eval $(ssh-agent -s)
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+        - touch ~/.ssh/config
+        - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        - ssh-keyscan -H $Production_Server >> ~/.ssh/known_hosts
+    script:
+        - echo "Deploying to Production Server..."
+        - ssh ec2-user@$Production_Server "sudo systemctl stop MyApp.service"
+        - scp target/MyApp.jar ec2-user@$Production_Server:~/MyApp/
+        - ssh ec2-user@$Production_Server "sudo systemctl start MyApp.service"
+        - echo "Deployment on Production Server Completed"
+
