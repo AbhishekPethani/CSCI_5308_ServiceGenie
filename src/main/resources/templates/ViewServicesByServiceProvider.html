@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h2 style="text-align:center";>View services by service providers</h2>
+<form action="/ServiceProviderHomePage?service_providerId=" method="post">
+
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="service_providerId" class="form-control" id="serviceProviderId" >
+    <option value="0">select operator</option>
+
+            <option th:each="serviceprovider : ${serviceProviders}"
+                th:value="${serviceprovider}"
+                th:text="${serviceprovider}"></option>
+    </select>
+    <input type="submit" value="Show Services">
+</div>
+
+</form>
+
+<hr>
+
+<table id="serviceTable" border="1" >
+  <tr>
+    <th>ServiceID</th>
+    <th>ServiceProviderID</th>
+    <th>ServiceName</th>
+    <th>ServiceDescription</th>
+    <th>ServicePrice</th>
+  </tr>
+<tr th:each="service :${services}">
+	<td th:each="list :${service}" th:text="${list}" ></td>
+</tr  >
+</table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h1 style="text-align:center;">ADMIN HOMEPAGE</h1>
+<h2 style="text-align:center;">DASHBOARD</h2 >
+
+<hr style="width:100%;">
+	  <li style="text-align: left; margin-left:270px;">
+		<h3>Total Number of Service Providers: <p th:text="${serviceproviders_count}" th:remove="tag"></h3>
+		<h3>Total Number of Services: <p th:text="${services_count}" th:remove="tag"></h3>
+		<h3>Total Number of customers: <p th:text="${customers_count}" th:remove="tag"></h3>
+	  </li>
+	  
+	  	<ul style="list-style-type: none; text-align:center;">
+	  <li>
+	  	<a href="ServiceProviderHomePage">Services By Service Providers</a> &nbsp; &nbsp; &nbsp; 
+		<a href="ViewOrders">View Orders</a> &nbsp; &nbsp; &nbsp;
+		<a href="ViewOffers">Show Offers</a> &nbsp; &nbsp; &nbsp;
+		<a href="">Create Offers</a> &nbsp; &nbsp; &nbsp;
+		<a href="">Show Service Provider Details</a> &nbsp; &nbsp; &nbsp;
+		<a href="ServiceProviderProfile.html">Reviews</a> &nbsp; &nbsp; &nbsp;
+	  </li>
+	  	</ul>
+<hr style="width:100%;">
+<p> LIST OF SERVICES </p>
+<table id="serviceTable" border="1">
+    <tr th:each="service :${services}">
+        <td  th:text="${service}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

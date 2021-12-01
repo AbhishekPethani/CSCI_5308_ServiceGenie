@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h1 style="background-color: green";>Offer Created Successfully</H1>
+<h2 style="text-align:center";>View Orders</h2>
+
+<form action="/CreateOffers" method="post">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Create Offers">
+</div>
+</form>
+<hr>
+<table id="serviceTable" border="1" style="align:center";>
+  <tr>
+    <th>Offer ID</th>
+    <th>Offer Code</th>
+    <th>Minimum Bill</th>
+    <th>Offer Percentage</th>
+  </tr>
+<tr th:each="offer :${alloffers}">
+	<td th:each="list :${offer}" th:text="${list}" ></td>
+</tr  >
+</table>
+
+</body>
+</html>
