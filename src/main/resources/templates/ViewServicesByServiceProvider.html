@@ -1,5 +1,16 @@
 <!DOCTYPE HTML>
 <html>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
 <body>
 <h2 style="text-align:center";>View services by service providers</h2>
 <form action="/ServiceProviderHomePage?service_providerId=" method="post">
@@ -17,9 +28,15 @@
 
 </form>
 
+<form action="/admin-authentication" method="get">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Admin Home Page">
+</div>
+</form>
+
 <hr>
 
-<table id="serviceTable" border="1" >
+<table id="serviceTable" border="1" class="center">
   <tr>
     <th>ServiceID</th>
     <th>ServiceProviderID</th>

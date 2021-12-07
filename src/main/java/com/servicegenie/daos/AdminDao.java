@@ -1,5 +1,10 @@
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 package com.servicegenie.daos;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -7,25 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.servicegenie.services.ObtainDatabaseConnectionService;
-
-//Author
-//Kandarp Sharad Parikh
-//B00873863
-
 public class AdminDao {
 	
 	// Obtain Database connection and get customer details for authentication
-	ObtainDatabaseConnectionService MyDBConnect = new ObtainDatabaseConnectionService();
+//	ObtainDatabaseConnectionService myDBConnect = new ObtainDatabaseConnectionService();
+	Connection myDBConnect = ObtainDatabaseConnectionDao.getInstance().getMyConnection();
 	Statement sql ;
 	public AdminDao() throws SQLException{
-		this.sql = this.MyDBConnect.getMyConnection().createStatement();	
+		this.sql = this.myDBConnect.createStatement();	
 	}
 	
 	//Get credentials of admin
 	public ResultSet getAdminCredentials() throws SQLException{
 		ResultSet rs = this.sql.executeQuery("Select * from user_authentication where User_Type='admin';");
-		MyDBConnect.terminateConnection(MyDBConnect);
 		return rs;
 	}
 	
@@ -34,7 +33,6 @@ public class AdminDao {
 		ResultSet rs = this.sql.executeQuery("SELECT COUNT(*) from user_authentication where User_Type='customer';");
 	    rs.next();
 	    int count = rs.getInt(1);
-	    MyDBConnect.terminateConnection(MyDBConnect);
 		return count;
 	}
 	
@@ -43,7 +41,6 @@ public class AdminDao {
 		ResultSet rs = this.sql.executeQuery("SELECT COUNT(*) from user_authentication where User_Type='service-provider';");
 	    rs.next();
 	    int count = rs.getInt(1);
-	    MyDBConnect.terminateConnection(MyDBConnect);
 		return count;
 	}
 
@@ -52,7 +49,6 @@ public class AdminDao {
 		ResultSet rs = this.sql.executeQuery("SELECT COUNT(*) from services_details");
 	    rs.next();
 	    int count = rs.getInt(1);
-	    MyDBConnect.terminateConnection(MyDBConnect);
 		return count;
 		
 	}
@@ -66,7 +62,6 @@ public class AdminDao {
 		}
 		//Get the unique names of services
 		List<String> uniqueServiceNames = servicesName.stream().distinct().collect(Collectors.toList());
-		MyDBConnect.terminateConnection(MyDBConnect);
 		return uniqueServiceNames;
 	}
 	

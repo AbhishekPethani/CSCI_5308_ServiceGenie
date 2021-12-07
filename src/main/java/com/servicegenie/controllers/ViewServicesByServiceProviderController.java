@@ -1,3 +1,7 @@
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 package com.servicegenie.controllers;
 
 import java.sql.SQLException;
@@ -10,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.servicegenie.services.AdminAuthenticationService;
 import com.servicegenie.services.ViewServicesByServiceProviderService;
 
 @Controller

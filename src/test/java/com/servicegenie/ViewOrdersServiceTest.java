@@ -1,3 +1,7 @@
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 package com.servicegenie;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,12 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import com.servicegenie.services.ViewOrdersService;
-
-
-//Author
-//Kandarp Sharad Parikh
-//B00873863
-
 
 public class ViewOrdersServiceTest {
 	

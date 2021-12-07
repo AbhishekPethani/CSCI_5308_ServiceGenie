@@ -1,5 +1,18 @@
-<h2>Create Offer : </h2>
-<form action="/CreateNewOffer" method="post">
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+<h2 style="text-align:center";>Create Offer : </h2 >
+<hr>
+<form action="/CreateNewOffer" method="post" style="text-align:center";>
   <label>Offer Code:</label><br>
   <input type="text" id="offercode" name="offercode" placeholder="Offer Code"><br>
   <label>Minimum Amount:</label><br>
@@ -9,4 +22,23 @@
   <input type="submit" value="Submit">
 </form>
 
+<form action="/admin-authentication" method="get">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Admin Home Page">
+</div>
+</form>
 
+<hr>
+
+<h2 style="text-align:center";>Existing offers : </h2 >
+<table id="serviceTable" border="1" style="text-align:center" class="center";>
+  <tr>
+    <th>Offer ID</th>
+    <th>Offer Code</th>
+    <th>Minimum Bill</th>
+    <th>Offer Percentage</th>
+  </tr>
+<tr th:each="offer :${alloffers}">
+	<td th:each="list :${offer}" th:text="${list}" ></td>
+</tr  >
+</table>
