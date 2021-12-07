@@ -1,8 +1,10 @@
 package com.servicegenie.services;
 
 import com.servicegenie.ObtainDatabaseConnection;
-import com.servicegenie.entities.Service;
+import com.servicegenie.daos.ObtainDatabaseConnectionDao;
+import com.servicegenie.models.Service;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,8 +15,8 @@ public class BuyServiceService {
 
     public List<Service> getAllService() throws SQLException {
         List<Service> serviceList = new ArrayList<>();
-        ObtainDatabaseConnectionService dbConnection = new ObtainDatabaseConnectionService();
-        Statement selectStatement = dbConnection.getMyConnection().createStatement();
+    	Connection myDBConnect = ObtainDatabaseConnectionDao.getInstance().getMyConnection();
+        Statement selectStatement = myDBConnect.createStatement();
         ResultSet resultSet = selectStatement.executeQuery("SELECT * FROM services_details;");
         while (resultSet.next()){
             String serviceID = resultSet.getString("ServiceID");
@@ -25,7 +27,6 @@ public class BuyServiceService {
             Service service = new Service(serviceID, serviceProviderID, serviceName, serviceDescription ,servicePrice);
             serviceList.add(service);
         }
-        dbConnection.terminateConnection(dbConnection);
         return serviceList;
     }
 }

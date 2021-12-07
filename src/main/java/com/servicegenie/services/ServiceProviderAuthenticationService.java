@@ -1,9 +1,15 @@
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 package com.servicegenie.services;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import org.springframework.stereotype.Service;
+
 import com.servicegenie.ObtainDatabaseConnection;
 
 @Service
@@ -23,9 +29,9 @@ public class ServiceProviderAuthenticationService {
 		{
 			if(result.getString("User_ID").equals(userID) && result.getString("User_Password").equals(password))
 			{
-				return "redirect:ServiceProviderHomePage.html";
+				return "ServiceProviderHomePage.html";
 			}
 		}
-		return "redirect:LoginFailed.html";
+		return "LoginFailed.html";
 	}
 }

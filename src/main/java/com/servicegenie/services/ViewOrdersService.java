@@ -1,3 +1,7 @@
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 package com.servicegenie.services;
 
 import java.sql.ResultSet;
@@ -9,11 +13,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.servicegenie.daos.ViewOrdersDao;
-import com.servicegenie.daos.ViewServicesByServiceProviderDao;
-
-//Author
-//Kandarp Sharad Parikh
-//B00873863
 
 //Class to facilitate the functionality of viewing orders
 @Service

@@ -1,3 +1,7 @@
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 package com.servicegenie.services;
 
 import java.sql.ResultSet;
@@ -7,30 +11,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.ws.wsdl.wsdl11.provider.ServicesProvider;
 
-import com.servicegenie.daos.AdminDao;
 import com.servicegenie.daos.ViewServicesByServiceProviderDao;
 
-//Author
-//Kandarp Sharad Parikh
-//B00873863
 
 //Class to view the services 
 @Service
-public class ViewServicesByServiceProviderService {
+public class ViewServicesByServiceProviderService
+{
 	
 	private ViewServicesByServiceProviderDao services;
 
-	public ViewServicesByServiceProviderService() throws SQLException {
+	public ViewServicesByServiceProviderService() throws SQLException 
+	{
 		ViewServicesByServiceProviderDao services = new ViewServicesByServiceProviderDao();
 		this.services = services;
-		}
+	}
 	
-	//Function to get all the service details based on the service provider
-	public List<ArrayList<String>> getServiceDetails(String serviceProvider , ModelMap model) throws SQLException {
+	// Method to get all the service details based on the service provider
+	public List<ArrayList<String>> getServiceDetails(String serviceProvider , ModelMap model) throws SQLException 
+	{
 		ResultSet rs = this.services.getServicesByServiceProvider(serviceProvider);
 		List<ArrayList<String>> listOfLists = new ArrayList<ArrayList<String>>();
 		
@@ -48,7 +49,7 @@ public class ViewServicesByServiceProviderService {
 		return listOfLists;
 	}
 	
-	
+	// Method to get the list of unique Service Providers
 	public List<String> getListOfServiceProviders() throws SQLException
 	{
 		ResultSet rs = this.services.getListOfServiceProviders();

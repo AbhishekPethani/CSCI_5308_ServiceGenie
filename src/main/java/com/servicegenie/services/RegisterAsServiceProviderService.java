@@ -1,8 +1,11 @@
 package com.servicegenie.services;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import org.springframework.stereotype.Service;
+
+import com.servicegenie.daos.ObtainDatabaseConnectionDao;
 
 //Class to register a new user as a service-provider
 @Service
@@ -22,7 +25,7 @@ public class RegisterAsServiceProviderService {
 			return "redirect:RegistrationFailed.html";
 		}
 		
-		ObtainDatabaseConnectionService dbconnect = new ObtainDatabaseConnectionService();
+		Connection myDBConnect = ObtainDatabaseConnectionDao.getInstance().getMyConnection();
 		
 		String insertServiceProviderQuery = " insert into service_provider_details (ServiceProviderID, ServiceProvider_FirstName,"
 				+ "ServiceProvider_LastName, ServiceProvider_Category, ServiceProvider_CategoryIndex,"
@@ -34,7 +37,7 @@ public class RegisterAsServiceProviderService {
 		
 		String insertAuthenticationDetailQuery = "insert into user_authentication (User_ID, User_Password, User_Type) values (?, ?, ?)"; 
 		
-		PreparedStatement MyPreparedStatement = dbconnect.getMyConnection().prepareStatement(insertServiceProviderQuery);
+		PreparedStatement MyPreparedStatement = myDBConnect.prepareStatement(insertServiceProviderQuery);
 	    MyPreparedStatement.setString (1, userID);
 	    MyPreparedStatement.setString (2, firstName);
 	    MyPreparedStatement.setString (3, lastName);
@@ -52,7 +55,7 @@ public class RegisterAsServiceProviderService {
 	    MyPreparedStatement.setString (15, branchID);
 	    MyPreparedStatement.execute();
 
-	    MyPreparedStatement = dbconnect.getMyConnection().prepareStatement(insertAuthenticationDetailQuery);
+	    MyPreparedStatement = myDBConnect.prepareStatement(insertAuthenticationDetailQuery);
 	    MyPreparedStatement.setString (1, userID);
 	    MyPreparedStatement.setString (2, password);
 	    MyPreparedStatement.setString (3, "service-provider");

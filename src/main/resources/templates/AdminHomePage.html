@@ -1,5 +1,16 @@
 <!DOCTYPE HTML>
 <html>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
 <body>
 <h1 style="text-align:center;">ADMIN HOMEPAGE</h1>
 <h2 style="text-align:center;">DASHBOARD</h2 >
@@ -16,14 +27,14 @@
 	  	<a href="ServiceProviderHomePage">Services By Service Providers</a> &nbsp; &nbsp; &nbsp; 
 		<a href="ViewOrders">View Orders</a> &nbsp; &nbsp; &nbsp;
 		<a href="ViewOffers">Show Offers</a> &nbsp; &nbsp; &nbsp;
-		<a href="">Create Offers</a> &nbsp; &nbsp; &nbsp;
-		<a href="">Show Service Provider Details</a> &nbsp; &nbsp; &nbsp;
-		<a href="ServiceProviderProfile.html">Reviews</a> &nbsp; &nbsp; &nbsp;
+		<a href="CreateOffers">Create Offers</a> &nbsp; &nbsp; &nbsp;
+		<a href="DeleteOffers">Delete Offers</a> &nbsp; &nbsp; &nbsp;
+		<a href="BlockUsers">Blocked Users</a> &nbsp; &nbsp; &nbsp;
 	  </li>
 	  	</ul>
 <hr style="width:100%;">
-<p> LIST OF SERVICES </p>
-<table id="serviceTable" border="1">
+<p style="text-align:center;"> LIST OF SERVICES </p >
+<table id="serviceTable" border="1" class="center">
     <tr th:each="service :${services}">
         <td  th:text="${service}"></td>
     </tr>

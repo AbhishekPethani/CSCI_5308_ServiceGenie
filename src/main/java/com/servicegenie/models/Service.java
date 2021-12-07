@@ -1,4 +1,4 @@
-package com.servicegenie.entities;
+package com.servicegenie.models;
 
 public class Service {
     private String serviceID;

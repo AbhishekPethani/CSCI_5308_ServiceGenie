@@ -1,25 +1,27 @@
+package com.servicegenie.daos;
+
 //Author
 //Kandarp Sharad Parikh
 //B00873863
-
-package com.servicegenie.daos;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AuthenticationDao {
+public class CustomerAuthenticationDao 
+{
 	// Obtain Database connection
 	Connection myDBConnect = ObtainDatabaseConnectionDao.getInstance().getMyConnection();
 	Statement sql ;
-	public AuthenticationDao() throws SQLException
+	
+	public CustomerAuthenticationDao() throws SQLException
 	{
 		this.sql = this.myDBConnect.createStatement();	
 	}
-
-	//Get credentials of customer 
-	public ResultSet getCustomerCredentials() throws SQLException
+	
+	// Method to get all the user credentials of customers
+	public ResultSet validateUser(String userId,String password) throws SQLException
 	{
 		ResultSet resultSet = sql.executeQuery("Select * from user_authentication where User_Type='customer';");
 		return resultSet;

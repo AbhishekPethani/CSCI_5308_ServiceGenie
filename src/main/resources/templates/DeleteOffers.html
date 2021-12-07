@@ -12,19 +12,28 @@ table.center {
 }
 </style>
 <body>
-<h1 style="background-color: green";>Offer Created Successfully</H1>
-<h2 style="text-align:center";>View Orders</h2>
+<h2 style="text-align:center";>Delete Services</h2>
 
-<form action="/CreateOffers" method="post">
-<div class="form-group blu-margin" style="text-align:center";>
-    <input type="submit" value="Create Offers">
-</div>
-</form>
 <form action="/admin-authentication" method="get">
 <div class="form-group blu-margin" style="text-align:center";>
     <input type="submit" value="Admin Home Page">
 </div>
 </form>
+<form action="/DeleteOffers?OfferId=" method="post">
+
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="OfferId" class="form-control" id="OfferId" >
+    <option value="0">Select OfferCode</option>
+
+            <option th:each="offercode : ${offercodes}"
+                th:value="${offercode}"
+                th:text="${offercode}"></option>
+    </select>
+    <input type="submit" value="Delete this offer code">
+</div>
+
+</form>
+
 <hr>
 <table id="serviceTable" border="1" style="text-align:center" class="center";>
   <tr>
@@ -37,6 +46,5 @@ table.center {
 	<td th:each="list :${offer}" th:text="${list}" ></td>
 </tr  >
 </table>
-
 </body>
 </html>

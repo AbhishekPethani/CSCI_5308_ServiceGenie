@@ -1,3 +1,7 @@
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 package com.servicegenie;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,27 +16,27 @@ import org.springframework.ui.ModelMap;
 
 import com.servicegenie.services.ViewServicesByServiceProviderService;
 
-//Author
-//Kandarp Sharad Parikh
-//B00873863
-
-
-public class ViewServicesByServiceProviderServiceTest {
+public class ViewServicesByServiceProviderServiceTest 
+{
 	ViewServicesByServiceProviderService viewServiceObj = new ViewServicesByServiceProviderService();
-	public ViewServicesByServiceProviderServiceTest() throws SQLException {
+	
+	public ViewServicesByServiceProviderServiceTest() throws SQLException
+	{
 		ViewServicesByServiceProviderService viewServiceObj = new ViewServicesByServiceProviderService();
 		this.viewServiceObj = viewServiceObj;
 	}
 	
 	//Test to check that the class is not null
 	@Test
-	void ViewServicesByServiceProviderServiceNotNull() {
+	void ViewServicesByServiceProviderServiceNotNull() 
+	{
 		assertNotNull(this.viewServiceObj);
 	}
 	
 	//Test to check that the services are retrievable
 	@Test
-	void getServiceDetailsTest() throws SQLException {
+	void getServiceDetailsTest() throws SQLException 
+	{
 		String serviceProvider = "dalhousie11";
 		ModelMap model = new ModelMap();
 		assertThat(this.viewServiceObj.getServiceDetails(serviceProvider, model) instanceof List);
@@ -40,13 +44,10 @@ public class ViewServicesByServiceProviderServiceTest {
 	
 	//Test to get the list of service providers
 	@Test
-	void getListOfServiceProvidersTest() throws SQLException {
+	void getListOfServiceProvidersTest() throws SQLException 
+	{
 		String serviceProvider = "dalhousie11";
 		ModelMap model = new ModelMap();
 		assertThat(this.viewServiceObj.getListOfServiceProviders() instanceof List);
 	}
-	
-	
-	
-
 }

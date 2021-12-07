@@ -1,3 +1,7 @@
+//Author
+//Kandarp Sharad Parikh
+//B00873863
+
 package com.servicegenie.controllers;
 
 import java.sql.SQLException;
@@ -17,9 +21,18 @@ public class CustomerAuthenticationController {
 	@Autowired
 	private CustomerAuthenticationService customerauthenticationservice;
 
+	// Method to redirect to user home page if the credentials are correct
+	// Else the user will be redirected to login page with error message
 	@RequestMapping(method = RequestMethod.POST , value = "/customer-authentication")
-	public String ValidateUser(@RequestParam("customer-userid")String myUser , @RequestParam("customer-password") String myPass) throws SQLException
+	public String validateUser(@RequestParam("customer-userid")String myUser , @RequestParam("customer-password") String myPass) throws SQLException
 	{
-		return customerauthenticationservice.validateUser(myUser, myPass);
+		if(customerauthenticationservice.validateUser(myUser, myPass) == true)
+		{
+			return "UserHomePage.html";
+		}
+		else
+		{
+			return "LoginFailed.html";
+		}
 	}
 }

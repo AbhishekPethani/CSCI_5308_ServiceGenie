@@ -1,5 +1,16 @@
 <!DOCTYPE HTML>
 <html>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
 <body>
     <h1 style="background-color:Red";>Offer Code already exists</H1>
 <h2 style="text-align:center";>View Orders</h2>
@@ -9,8 +20,13 @@
     <input type="submit" value="Create Offers">
 </div>
 </form>
+<form action="/admin-authentication" method="get">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Admin Home Page">
+</div>
+</form>
 <hr>
-<table id="serviceTable" border="1" style="align:center";>
+<table id="serviceTable" border="1" style="text-align:center" class="center";>
   <tr>
     <th>Offer ID</th>
     <th>Offer Code</th>

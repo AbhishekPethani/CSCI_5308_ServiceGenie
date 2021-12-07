@@ -1,6 +1,6 @@
 package com.servicegenie.controllers;
 
-import com.servicegenie.entities.Service;
+import com.servicegenie.models.Service;
 import com.servicegenie.services.BuyServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
