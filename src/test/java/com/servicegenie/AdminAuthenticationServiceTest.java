@@ -10,40 +10,23 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.ModelMap;
 import com.servicegenie.services.AdminAuthenticationService;
+import com.servicegenie.services.BlockedUserService;
 
 public class AdminAuthenticationServiceTest 
 {
-	AdminAuthenticationService AdminObj = new AdminAuthenticationService();
+	AdminAuthenticationService admin = new AdminAuthenticationService();
+	
+	public AdminAuthenticationServiceTest() throws SQLException 
+	{
+		AdminAuthenticationService admin = new AdminAuthenticationService();
+		this.admin = admin;
+	}
 	
 	//Test to check if the class is not null
 	@Test
 	void AdminAuthenticationServiceNotNUll()
 	{
-		assertNotNull(AdminObj);
-	}
-	
-	//Test to check that the return type of the validate User is String
-	@Test
-	void validateUserReturnTest() throws SQLException 
-	{
-		ModelMap model = new ModelMap();
-		assertThat(AdminObj.validateUser("1", "Kandarp",model) instanceof String);
-	}
-	
-	//Test to check that login is successful for correct credentials
-	@Test
-	void validateUserLoginSucsessTest() throws SQLException 
-	{
-		ModelMap model = new ModelMap();
-		assertThat(AdminObj.validateUser("1", "Kandarp",model) == "AdminHomePage.html");
-	}
-	
-	//Test to check that login is unsuccessful for incorrect credentials
-	@Test
-	void validateUserLoginFailureTest() throws SQLException 
-	{
-		ModelMap model = new ModelMap();
-		assertThat(AdminObj.validateUser("1", "WrongPassword",model) == "redirect:LoginFailed.html");
+		assertNotNull(admin);
 	}
 	
 	//Test to check that the ModelAttributes return the ModelMap object
@@ -51,6 +34,6 @@ public class AdminAuthenticationServiceTest
 	void getModelAttributesTest() throws SQLException 
 	{
 		ModelMap model = new ModelMap();
-		assertThat(AdminObj.getModelAttributes(model) instanceof ModelMap);
+		assertThat(admin.getModelAttributes(model) instanceof ModelMap);
 	}
 }

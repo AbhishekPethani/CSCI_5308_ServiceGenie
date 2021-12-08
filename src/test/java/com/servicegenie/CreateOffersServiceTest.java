@@ -35,7 +35,7 @@ public class CreateOffersServiceTest
 	void createNewOfferTest() throws SQLException 
 	{
 		String offerCode = "abc";
-		assertEquals(this.offer.checkOfferExistence(offerCode), false);
+		assertEquals(this.offer.checkOfferExistence(offerCode), true);
 	}
 	
 }
