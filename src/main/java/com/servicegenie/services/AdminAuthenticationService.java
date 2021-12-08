@@ -6,10 +6,12 @@ package com.servicegenie.services;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+
 import com.servicegenie.daos.AdminDao;
-import com.servicegenie.daos.BlockedUsersDao;
+import com.servicegenie.daos.OffersDao;
 
 @Service
 public class AdminAuthenticationService 
@@ -21,6 +23,7 @@ public class AdminAuthenticationService
 		AdminDao admin = new AdminDao();
 		this.admin = admin;
 	}
+
 	// Check if userid and password entered matches or not
 	// If the userId and password matches the user will be redirected to Customer Home page
 	// Else the User will be redirected to Login page again which has an error message
@@ -36,13 +39,13 @@ public class AdminAuthenticationService
 				return "AdminHomePage.html";
 			}
 		}
-		
 		return "LoginFailed.html";
 	}
 	
 	// Method to get all the model attributes required to populate the admin homepage dashboard
 	public ModelMap getModelAttributes(ModelMap model) throws SQLException 
 	{
+		AdminDao admin = new AdminDao();
 		model.addAttribute("customers_count",admin.getNumberOfCustomers().toString());
 		model.addAttribute("serviceproviders_count", admin.getNumberOfServiceProviders());
 		model.addAttribute("services_count", admin.getNumberOfServices());
