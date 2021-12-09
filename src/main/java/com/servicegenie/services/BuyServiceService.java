@@ -1,32 +1,42 @@
 package com.servicegenie.services;
 
-import com.servicegenie.ObtainDatabaseConnection;
-import com.servicegenie.daos.ObtainDatabaseConnectionDao;
-import com.servicegenie.models.Service;
+import com.servicegenie.daos.BuyServiceDao;
+import com.servicegenie.models.Order;
+import com.servicegenie.models.ServiceForCustomers;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+@org.springframework.stereotype.Service
 public class BuyServiceService {
 
-    public List<Service> getAllService() throws SQLException {
-        List<Service> serviceList = new ArrayList<>();
-    	Connection myDBConnect = ObtainDatabaseConnectionDao.getInstance().getMyConnection();
-        Statement selectStatement = myDBConnect.createStatement();
-        ResultSet resultSet = selectStatement.executeQuery("SELECT * FROM services_details;");
-        while (resultSet.next()){
-            String serviceID = resultSet.getString("ServiceID");
-            String serviceProviderID = resultSet.getString("ServiceProviderID");
-            String serviceName = resultSet.getString("ServiceName");
-            String serviceDescription = resultSet.getString("ServiceDescription");
-            Double servicePrice = resultSet.getDouble("ServicePrice");
-            Service service = new Service(serviceID, serviceProviderID, serviceName, serviceDescription ,servicePrice);
-            serviceList.add(service);
+    private static Logger logger = Logger.getLogger(BuyServiceService.class.getName());
+
+    private static BuyServiceDao buyServiceDao = new BuyServiceDao();
+
+    public List<ServiceForCustomers> getAllServices() throws SQLException {
+
+        List<ServiceForCustomers> serviceForCustomersList = buyServiceDao.getAllServices();
+        if (serviceForCustomersList == null) {
+            logger.log(Level.WARNING, "List for listing/providing service provider's service is null");
         }
-        return serviceList;
+        return serviceForCustomersList;
     }
+
+    public ServiceForCustomers getServiceByID(String serviceID){
+        ServiceForCustomers theServiceForCustomers = null;
+        try{
+            theServiceForCustomers = buyServiceDao.getServiceByID(serviceID);
+        }catch(SQLException sqlException){
+            logger.log(Level.SEVERE, "Exception while retrieving service using service id\n");
+        }
+        return theServiceForCustomers;
+    }
+
+    public boolean placeOrder(Order order) throws SQLException {
+        return buyServiceDao.placeOrder(order);
+    }
+
 }

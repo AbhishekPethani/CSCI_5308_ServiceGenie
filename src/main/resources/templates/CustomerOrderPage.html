@@ -15,7 +15,7 @@ h1 {
 <br>
 <div class="container">
 
-    <h1>CUSTOMER BUY SERVICE PAGE</h1>
+    <h1>CUSTOMER ORDER PAGE</h1>
     <p th:text="${msg}"></p>
     <br>
     <ul class="list-group list-group-horizontal">
@@ -25,7 +25,7 @@ h1 {
             <a th:href="@{/view-customer-offers}">Offers</a> &nbsp; &nbsp; &nbsp;
             <a th:href="@{/view-customer-orders}">Orders</a> &nbsp; &nbsp; &nbsp;
             <a th:href="@{/view-customer-profile}">Profile</a>
-            <a href="">Reviews</a>&nbsp; &nbsp; &nbsp;
+            <a href="">Reviews</a> &nbsp; &nbsp; &nbsp;
         </li>
         <hr style="width:60%;" >
 
@@ -34,28 +34,24 @@ h1 {
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
+            <th scope="col">Order ID</th>
+            <th scope="col">Service Name</th>
             <th scope="col">price</th>
-            <th scope="col">Buy</th>
         </tr>
         </thead>
         <tbody>
-        <form th:each="serviceForCustomers: ${serviceForCustomersList}" th:action="@{/pay-serviceForCustomers/}+${serviceForCustomers.serviceID}" method="post">
+        <form th:each="order: ${orderList}" method="get">
 
             <tr>
-                <td th:text="${serviceForCustomers.serviceName}" />
-                <td th:text="${serviceForCustomers.serviceDescription}" />
-                <td th:text="${serviceForCustomers.servicePrice}" />
+                <td th:text="${order.orderID}" />
+                <td th:text="${order.serviceProviderID}" />
+                <td th:text="${order.orderAmount}" />
 
-                <input type="hidden" th:value="${serviceForCustomers.serviceID}" name="id" />
-
-                <td>
-
-                    <button type="submit"class="btn btn-success">Buy</button>
-
-                </td>
             </tr>
+        </form>
+        <br>
+        <form th:action="@{/view-customer-home}" method="get">
+            <button type="submit" class="btn btn-success" >Go Home</button>
         </form>
         </tbody>
     </table>

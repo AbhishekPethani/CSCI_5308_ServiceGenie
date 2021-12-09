@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>CUSTOMER PROFILE</title>
+</head>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Service Genie - Customer Profile</title>
+    <link th:href="@{/public/bootstrap.min.css}" rel="stylesheet">
+    <style>
+h1 {
+	text-align: center;
+}
+    </style>
+</head>
+<body>
+<br>
+<div class="container">
+    <h1>CUSTOMER PROFILE PAGE</h1>
+    <hr>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">
+            <a th:href="@{/view-customer-home}">Home</a> &nbsp; &nbsp; &nbsp;
+            <a th:href="@{/buy-serviceForCustomers}">Buy Service</a> &nbsp; &nbsp; &nbsp;
+            <a th:href="@{/view-customer-offers}">Offers</a> &nbsp; &nbsp; &nbsp;
+            <a th:href="@{/view-customer-orders}">Orders</a> &nbsp; &nbsp; &nbsp;
+            <a th:href="@{/view-customer-profile}">Profile</a>
+            <a href="">Reviews</a> &nbsp; &nbsp; &nbsp;
+    </ul>
+    <br>
+    <br>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">CUSTOMER PROFILE</li>
+
+        </li>
+        <hr style="width:60%;" >
+
+        <table class="table">
+            <tr>
+                <td> <b> First Name: </b> </td>
+                <td th:text = "${customerProfile.firstName}"> </td>
+            </tr>
+            <tr>
+                <td> <b> Last Name: </b> </td>
+                <td th:text = "${customerProfile.lastName}"> </td>
+            </tr>
+                <td> <b> Email ID: </b> </td>
+                <td th:text = "${customerProfile.email}"> </td>
+            </tr>
+            <tr>
+                <td> <b> Contact Number: </b> </td>
+                <td th:text = "${customerProfile.contactNumber}"> </td>
+            </tr>
+            <tr>
+                <td> <b> Address: </b> </td>
+                <td th:text = "${customerProfile.address}"> </td>
+            </tr>
+            <tr>
+                <td> <b> Zipcode: </b> </td>
+                <td th:text = "${customerProfile.zipCode}"> </td>
+            </tr>
+        </table>
+
+    </ul>
+    <div>
+        <form th:action="@{/view-customer-home}" method="get">
+            <button type="submit" class="btn btn-success" >Go Home</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
