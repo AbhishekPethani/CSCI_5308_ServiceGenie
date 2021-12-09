@@ -33,9 +33,6 @@ Test:
 deploy-to-production:
     only:
       - merge_requests
-    except:
-      variables:
-        - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "main"
     stage: deploy
     tags: ["dalfcs_docker_kvm", "dalfcs_gitlab_docker_ci"]
     image: alpine:3.11
