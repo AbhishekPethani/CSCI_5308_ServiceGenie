@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="ISO-8859-1">
     <title>Service Genie</title>
@@ -8,12 +8,14 @@
 h1 {
 	text-align: center;
 }
-    </style>
+</style>
 </head>
 <body>
+
 <br>
 <div class="container">
-    <h1>CUSTOMER HOME PAGE</h1>
+
+    <h1>CUSTOMER OFFER PAGE</h1>
     <p th:text="${msg}"></p>
     <br>
     <ul class="list-group list-group-horizontal">
@@ -23,10 +25,32 @@ h1 {
             <a th:href="@{/view-customer-offers}">Offers</a> &nbsp; &nbsp; &nbsp;
             <a th:href="@{/view-customer-orders}">Orders</a> &nbsp; &nbsp; &nbsp;
             <a th:href="@{/view-customer-profile}">Profile</a>
-            <a href="">Reviews</a>
+            <a href="">Reviews</a> &nbsp; &nbsp; &nbsp;
         </li>
-        <br>
+        <hr style="width:60%;" >
+
     </ul>
+    <br>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Offer Code</th>
+            <th scope="col">Discount Percentage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form th:each="offer: ${offerList}">
+            <tr>
+                <td th:text="${offer.offerCode}" />
+                <td th:text="${offer.discountPercentage}" />
+            </tr>
+        </form>
+        <form th:action="@{/view-customer-home}" method="get">
+            <button type="submit" class="btn btn-success" >Go Home</button>
+        </form>
+        </tbody>
+    </table>
+
 </div>
 </body>
 </html>
