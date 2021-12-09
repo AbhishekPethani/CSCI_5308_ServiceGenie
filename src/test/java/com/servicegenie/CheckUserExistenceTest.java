@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
+import com.servicegenie.services.BlockedUserService;
 import com.servicegenie.services.CheckUserExistenceService;
 
 //Author
@@ -15,6 +16,12 @@ import com.servicegenie.services.CheckUserExistenceService;
 
 class CheckUserExistenceTest {
 	CheckUserExistenceService validate = new CheckUserExistenceService();
+
+	public CheckUserExistenceTest() throws SQLException 
+	{
+		CheckUserExistenceService validate = new CheckUserExistenceService();
+		this.validate = validate;
+	}
 	
 	//Test to check that the class is not null
 	@Test
