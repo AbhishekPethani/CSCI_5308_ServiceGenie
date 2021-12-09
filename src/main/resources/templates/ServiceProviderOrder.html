@@ -1,0 +1,88 @@
+	<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Service Provider</title>
+<style>
+table, td, th {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table, tr{
+	margin-left:270px;
+	border-collapse: collapse;
+}
+tr{
+	padding:5px;
+}
+</style>
+</head>
+<body>
+	<h1 style="text-align:center;">MY ORDER PAGE</h1>
+	<hr>
+	<ul style="list-style-type: none; text-align:center;">
+	  <li>
+	  	<a href="my-home-page" th:href="@{~/my-home-page/{service-provider-id}(service-provider-id=${userID})}">Home</a> &nbsp; &nbsp; &nbsp; 
+		<a href="view-all-orders" th:href="@{/view-all-orders/{service-provider-id}(service-provider-id=${userID})}">Order</a> &nbsp; &nbsp; &nbsp;
+		<a href="my-profile" th:href="@{~/my-profile/{service-provider-id}(service-provider-id=${userID})}">MyProfile</a> &nbsp; &nbsp; &nbsp;
+	  </li>
+	 </ul> 
+	 <hr style="width:60%;" />
+	 <h2 style="text-align: left; margin-left:270px;"> My Current Orders </h2>
+	 <table>
+    	<thead>
+	        <tr>
+	            <th style = "width:150px; text-align:center; padding:5px"> Order ID </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Service Name </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Customer ID </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Order Amount($) </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Order Date </th>
+	       	</tr>
+    	</thead>
+	    <tbody>
+			<tr th:if="${orders.empty}">
+	        	    <td colspan="4"> No Orders Available </td>
+	     	</tr>
+	        <tr th:each="order : ${orders}"> 
+		    	<td th:text="${order.orderID}"> </td>
+		    	<td th:text="${order.serviceName}"> </td>
+		    	<td th:text="${order.customerID}"> </td>
+		    	<td th:text="${order.orderAmount}"> </td>
+		    	<td th:text="${order.orderDate}"> </td>
+	        </tr>
+	    </tbody>
+	</table>
+	<h2 style="text-align: left; margin-left:270px;"> Process Orders </h2>
+	<form style="text-align: left; margin-left:270px;" th:action="@{/process-orders/{service-provider-id}(service-provider-id=${userID})}"method="post">
+		<label>Order ID:</label>
+		<input type="text" id="order-id" name="order-id" placeholder="Enter Order Id"> <br> <br>
+		<button type="submit" value="submit">Submit</button>
+	</form>
+	
+	<h2 style="text-align: left; margin-left:270px;"> Completed Orders </h2>
+	<table>
+    	<thead>
+	        <tr>
+	            <th style = "width:150px; text-align:center; padding:5px"> Order ID </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Service Name </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Customer ID </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Order Amount($) </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Order Date </th>
+	       	</tr>
+    	</thead>
+	    <tbody>
+			<tr th:if="${processedOrders.empty}">
+	        	    <td colspan="4"> No Orders Available </td>
+	     	</tr>
+	        <tr th:each="processedOrder : ${processedOrders}"> 
+		    	<td th:text="${processedOrder.orderID}"> </td>
+		    	<td th:text="${processedOrder.serviceName}"> </td>
+		    	<td th:text="${processedOrder.customerID}"> </td>
+		    	<td th:text="${processedOrder.orderAmount}"> </td>
+		    	<td th:text="${processedOrder.orderDate}"> </td>
+	        </tr>
+	    </tbody>
+	</table> 
+	</body>
+</html>

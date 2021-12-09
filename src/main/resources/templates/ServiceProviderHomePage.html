@@ -1,5 +1,6 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Service Provider</title>
 </head>
@@ -8,25 +9,23 @@
 	<hr>
 	<ul style="list-style-type: none; text-align:center;">
 	  <li>
-	  	<a href="ServiceProviderHomePage.html">Home</a> &nbsp; &nbsp; &nbsp; 
-		<a href="">Order</a> &nbsp; &nbsp; &nbsp;
-		<a href="">MyWallet</a> &nbsp; &nbsp; &nbsp;
-		<a href="">MyOffers</a> &nbsp; &nbsp; &nbsp;
-		<a href="">MyReviews</a> &nbsp; &nbsp; &nbsp;
-		<a href="ServiceProviderProfile.html">MyProfile</a> &nbsp; &nbsp; &nbsp;
-	    <a href="">Help</a> &nbsp; &nbsp; &nbsp;	
+	  	<a href="my-home-page" th:href="@{~/my-home-page/{service-provider-id}(service-provider-id=${userID})}">Home</a> &nbsp; &nbsp; &nbsp; 
+		<a href="view-all-orders" th:href="@{/view-all-orders/{service-provider-id}(service-provider-id=${userID})}">Order</a> &nbsp; &nbsp; &nbsp;
+		<a href="my-profile" th:href="@{~/my-profile/{service-provider-id}(service-provider-id=${userID})}">MyProfile</a> &nbsp; &nbsp; &nbsp;	
 	  </li>
-	  <hr style="width:60%;" >
+	 </ul> 
+	 <hr style="width:60%;" />
+	 <ul style="list-style-type: none;">
 	  <li style="text-align: left; margin-left:270px;">
-		<h2> Welcome </h2>
-		<h3>Total Number of Services Provided: 0</h3>
-		<h3>Revenue generated through sales: $0.00 </h3>
-		<h3>Average customer rating: 0.0 </h3>
+		<h2 th:text="'Welcome ' + ${userID}">  </h2>
+		<h3 th:text="'Total Number of Services Provided: ' + ${countOfService}"> </h3>
+		<h3 th:text="'Revenue generated through sales: $' + ${totalEarning}"> </h3>
 	  </li>
 	</ul>
 	<div style="text-align:center;">
-		<button onclick = "location.href = 'AddService.html';" >Add Service</button>
-		<button onclick = "location.href = 'ViewAllService.html';" >View Service</button>
+		<a href="get-new-service-view" th:href="@{/get-new-service-view/{service-provider-id}(service-provider-id=${userID})}">Add Service</a> &nbsp; &nbsp; &nbsp;
+		<a href="view-all-services" th:href="@{/view-all-services/{service-provider-id}(service-provider-id=${userID})}">View Services</a> &nbsp; &nbsp; &nbsp;
+		
 	</div>
 	</body>
 </html>

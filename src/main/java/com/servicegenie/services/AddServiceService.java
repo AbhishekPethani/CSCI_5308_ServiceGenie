@@ -1,32 +1,31 @@
 package com.servicegenie.services;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import org.springframework.stereotype.Service;
+import com.servicegenie.daos.AddServiceDao;
+import com.servicegenie.model.ServiceProviderServices;
 
-import com.servicegenie.ObtainDatabaseConnection;
+//author
+//Abhishek Pareshbhai Pethani
+//B00899521
 
 @Service
 public class AddServiceService {
+	// object of AddServiceDao
+	private AddServiceDao addServiceDao;
 	
-	public String addService(String serviceName, String serviceDescription, String servicePrice) {
-		ObtainDatabaseConnection dbconnect = new ObtainDatabaseConnection();
-		String insertNewServiceQuery = " insert into services_details ( ServiceProviderID, "
-				+ "ServiceName, ServiceDescription, ServicePrice)"
-				+ " values (?, ?, ?, ?)";
-
-		PreparedStatement MyPreparedStatement;
-		try {
-			MyPreparedStatement = dbconnect.GetMyConnection().prepareStatement(insertNewServiceQuery);
-			MyPreparedStatement.setString (1, "1");
-			MyPreparedStatement.setString (2, serviceName);
-			MyPreparedStatement.setString (3, serviceDescription);
-			MyPreparedStatement.setString (4, servicePrice);
-			MyPreparedStatement.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return "redirect:AddService.html";
+	public AddServiceService(){
+		addServiceDao = new AddServiceDao();
+	}
+	
+	public void setAddServiceDao(AddServiceDao addServiceDao) {
+		this.addServiceDao = addServiceDao;
+	}
+	
+	public String addService(ServiceProviderServices service) throws SQLException {
+		// String message for displaying operations result on UI
+		String message = "";
+		message = addServiceDao.addServiceByUserID(service);
+		return message;
 	}
 }
