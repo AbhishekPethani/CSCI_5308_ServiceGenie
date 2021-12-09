@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+<body>
+<h2 style="text-align:center";>Delete Services</h2>
+
+<form action="/admin-authentication" method="get">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Admin Home Page">
+</div>
+</form>
+<form action="/DeleteOffers?OfferId=" method="post">
+
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="OfferId" class="form-control" id="OfferId" >
+    <option value="0">Select OfferCode</option>
+
+            <option th:each="offercode : ${offercodes}"
+                th:value="${offercode}"
+                th:text="${offercode}"></option>
+    </select>
+    <input type="submit" value="Delete this offer code">
+</div>
+
+</form>
+
+<hr>
+<table id="serviceTable" border="1" style="text-align:center" class="center";>
+  <tr>
+    <th>Offer ID</th>
+    <th>Offer Code</th>
+    <th>Minimum Bill</th>
+    <th>Offer Percentage</th>
+  </tr>
+<tr th:each="offer :${alloffers}">
+	<td th:each="list :${offer}" th:text="${list}" ></td>
+</tr  >
+</table>
+</body>
+</html>

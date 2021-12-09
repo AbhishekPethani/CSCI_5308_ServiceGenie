@@ -1,39 +1,36 @@
 <!DOCTYPE HTML>
 <html>
 <body>
-<h1 style="text-align:center" >SERVICE GENIE</h1>   
-<hr> 
-    <h2 style="text-align:center">To register as a new user click  <a href="/RegisterNewUser">HERE</a></h2 >
-    <hr> 
-<h2 style="text-align:center";>LOGIN AS : </h2 >
+    <h1 style="background-color:Red";>LOGIN FAILED : UserId or Password is incorrect</H1>
+    
+<h2  style="text-align:center";>LOGIN AS : </h2 >
 
-
-<h2 style="text-align:center";>Customer : </h2 >
-<form action="/customer-authentication" method="post" style="text-align:center";>
+<h2  style="text-align:center">Customer : </h2 >
+<form action="/customer-authentication" method="post"  style="text-align:center">
   <label>USER ID:</label><br>
   <input type="text" id="customer-userid" name="customer-userid"><br>
   <label>Password:</label><br>
   <input type="password" id="customer-password" name="customer-password" ><br><br>
   <input type="submit" value="Submit">
 </form>
-<hr> 
-<h2 style="text-align:center";>Service Provider : </h2 >
-<form action="/service-provider-authentication" method="post" style="text-align:center";>
+
+<h2  style="text-align:center">Service Provider : </h2 >
+<form action="/service-provider-authentication" method="post"  style="text-align:center">
   <label>USER ID:</label><br>
   <input type="text" id="service-provider-userid" name="service-provider-userid"><br>
   <label>Password:</label><br>
   <input type="password" id="password" name="password" ><br><br>
   <input type="submit" value="Submit">
 </form>
-<hr> 
-<h2 style="text-align:center";>ADMIN : </h2 >
-<form action="/admin-authentication" method="post" style="text-align:center";>
+
+<h2  style="text-align:center">ADMIN : </h2 >
+<form action="/admin-authentication" method="post"  style="text-align:center">
   <label>USER ID:</label><br>
   <input type="text" id="admin-userid" name="admin-userid"><br>
   <label>Password:</label><br>
   <input type="password" id="password" name="password" ><br><br>
   <input type="submit" value="Submit">
 </form>
-<hr>
+
 </body>
 </html>

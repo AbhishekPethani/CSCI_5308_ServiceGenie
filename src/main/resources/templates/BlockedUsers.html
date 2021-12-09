@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+<body>
+<h2 style="text-align:center";>Blocked Users</h2>
+
+<form action="/admin-authentication" method="get">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Admin Home Page">
+</div>
+</form>
+
+<form action="/ViewBlockedServiceProvider" method="post">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Show blocked service providers">
+</div>
+</form>
+
+<form action="/ViewBlockedCustomer" method="post">
+
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Show blocked customers">
+</div>
+</form>
+
+<hr>
+
+<table id="serviceTable" border="1" class="center">
+  <tr>
+    <th>User_ID</th>
+    <th>User_Type</th>
+    <th>User_Status</th>
+  </tr>
+<tr th:each="blockedUser :${blockedUsers}">
+	<td th:each="list :${blockedUser}" th:text="${list}" ></td>
+</tr  >
+</table>
+<hr>
+<h2 style="text-align:center";>Block New User</h2>
+<form action="/BlockUser?User_ID=" method="post">
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="User_ID" class="form-control" id="User_ID" >
+    <option value="0">Select Service Provider</option>
+
+            <option th:each="serviceprovider : ${serviceProviders}"
+                th:value="${serviceprovider}"
+                th:text="${serviceprovider}"></option>
+    </select>
+    <input type="submit" value="Block service provider">
+</div>
+</form>
+
+
+<form action="BlockUser?User_ID=" method="post">
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="User_ID" class="form-control" id="User_ID" >
+    <option value="0">Select Customer Id</option>
+
+            <option th:each="customer : ${customers}"
+                th:value="${customer}"
+                th:text="${customer}"></option>
+    </select>
+    <input type="submit" value="Block Customer">
+</div>
+</form>
+<hr>
+
+<form action="UnblockUser?User_ID=" method="post">
+<h2 style="text-align:center";>Unblock User</h2>
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="User_ID" class="form-control" id="User_ID" >
+    <option value="0">Select Customer Id</option>
+
+            <option th:each="customer : ${customers}"
+                th:value="${customer}"
+                th:text="${customer}"></option>
+    </select>
+    <input type="submit" value="Unblock customer">
+</div>
+</form>
+
+<form action="/UnblockUser?User_ID=" method="post">
+<div class="form-group blu-margin" style="text-align:center";>
+    <select name="User_ID" class="form-control" id="User_ID" >
+    <option value="0">Select Service Provider</option>
+
+            <option th:each="serviceprovider : ${serviceProviders}"
+                th:value="${serviceprovider}"
+                th:text="${serviceprovider}"></option>
+    </select>
+    <input type="submit" value="UnBlock service provider">
+</div>
+</form>
+</body>
+</html>

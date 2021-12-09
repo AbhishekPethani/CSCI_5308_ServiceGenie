@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+<body>
+<h2 style="text-align:center";>View Orders</h2>
+
+<form action="/CreateOffers" method="get">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Create Offers">
+</div>
+</form>
+
+<form action="/admin-authentication" method="get">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Admin Home Page">
+</div>
+</form>
+<hr>
+<table id="serviceTable" border="1" style="align:center" class="center";>
+  <tr>
+    <th>Offer ID</th>
+    <th>Offer Code</th>
+    <th>Minimum Bill</th>
+    <th>Offer Percentage</th>
+  </tr>
+<tr th:each="offer :${alloffers}">
+	<td th:each="list :${offer}" th:text="${list}" ></td>
+</tr  >
+</table>
+
+</body>
+</html>

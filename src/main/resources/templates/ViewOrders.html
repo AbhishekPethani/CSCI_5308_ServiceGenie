@@ -1,5 +1,16 @@
 <!DOCTYPE HTML>
 <html>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
 <body>
 <h2 style="text-align:center";>View Orders</h2>
 
@@ -37,16 +48,21 @@
 </div>
 </form>
 
+<form action="/admin-authentication" method="get">
+<div class="form-group blu-margin" style="text-align:center";>
+    <input type="submit" value="Admin Home Page">
+</div>
+</form>
 <hr>
 
-<table id="serviceTable" border="1" th:each="service :${services}">
+<table id="serviceTable" border="1" th:each="service :${services}" class="center">
 <tr  >
 <td th:each="list :${service}"th:text="${list}" ></td>
 </tr  >
 </table>
 
 
-<table id="serviceTable" border="1" >
+<table id="serviceTable" border="1" class="center">
   <tr>
     <th>Order ID</th>
     <th>Customer ID</th>
@@ -60,7 +76,7 @@
 </tr  >
 </table>
 
-<table id="serviceTable" border="1" >
+<table id="serviceTable" border="1" class="center">
   <tr>
     <th>Order ID</th>
     <th>Service Provider ID</th>
@@ -73,7 +89,7 @@
 </tr  >
 </table>
 
-<table id="serviceTable" border="1" >
+<table id="serviceTable" border="1" class="center">
   <tr>
     <th>Order ID</th>
     <th>Customer ID</th>
