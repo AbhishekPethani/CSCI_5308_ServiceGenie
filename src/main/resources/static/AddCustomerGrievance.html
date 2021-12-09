@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Grievance</title>
+</head>
+<body>
+	<h1 style="text-align:center;">ADD NEW GRIEVANCE</h1>
+	<hr>
+	<ul style="list-style-type: none; text-align:center;">
+	  <li>
+	  	<a href="ServiceProviderHomePage">Home</a> &nbsp; &nbsp; &nbsp; 
+		<a href="">Order</a> &nbsp; &nbsp; &nbsp;
+		<a href="">MyWallet</a> &nbsp; &nbsp; &nbsp;
+		<a href="">MyOffers</a> &nbsp; &nbsp; &nbsp;
+		<a href="">MyReviews</a> &nbsp; &nbsp; &nbsp;
+		<a href="ServiceProviderProfile.html">MyProfile</a> &nbsp; &nbsp; &nbsp;
+	    <a href="">Help</a> &nbsp; &nbsp; &nbsp;	
+	  </li>
+	 <hr style="width:60%;">
+	<li style="text-align: left; margin-left:270px;">
+		<form action="/add-grievance" method="post">
+		  
+		  	<label>Customer Email: </label> &nbsp; &nbsp; &nbsp;
+		  	<input type="text" name="customer-Email" id="customer-Email"> <br/> <br/>
+		  	
+		  	<label>Service Id: </label> &nbsp; &nbsp; &nbsp;
+		  	<input type="text" name="service-Id" id="service-Id"> <br/> <br/>
+		  	
+		  	<label>Enter Grievances: </label> &nbsp; &nbsp; &nbsp; &nbsp;
+		  	<textarea id="grievance-description" name="grievance-description" rows="4" cols="22">
+		  	</textarea> <br/> <br/>
+		  	
+		  	
+		  	
+		  	<input type="submit" value="Add Grievance">
+		  
+		</form>
+	</li>
+	</ul>
+</body>
+</html>

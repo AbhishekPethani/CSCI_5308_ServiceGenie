@@ -1,0 +1,61 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Service Provider</title>
+<style>
+table, td, th {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table, tr{
+	margin-left:270px;
+	border-collapse: collapse;
+}
+tr{
+	padding:5px;
+}
+</style>
+</head>
+<body>
+	<h1 style="text-align:center;">Customer Reviews</h1>
+	<hr>
+	<ul style="list-style-type: none; text-align:center;">
+	  <li>
+	  	<a href="AddReviews.html">Add Reviews</a> &nbsp; &nbsp; &nbsp;
+			<a href="AddGrievance.html">Add Grievance</a> &nbsp; &nbsp; &nbsp;
+			<a href="ViewReviews1.html">View Reviews</a> &nbsp; &nbsp; &nbsp;
+			<a href="ViewCustomerReviews1.html">View Customer Reviews</a> &nbsp; &nbsp; &nbsp;
+			<a href="ViewGreivance1.html">View Grievances</a> &nbsp; &nbsp; &nbsp;
+			<a href="VIewCustomerGreivance1.html">View Customer Grievances</a> &nbsp; &nbsp; &nbsp;
+			</li>
+	 </ul> 
+	 <hr style="width:60%;" />
+	 <h2 style="text-align: left; margin-left:270px;"> Customer's Reviews </h2>
+	 <table>
+    	<thead >
+	        <tr>
+	            <th style = "width:150px; text-align:center; padding:5px"> review_Id </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> ServiceId </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Customer_email </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> ReviewDescription </th>
+	             <th style = "width:150px; text-align:center; padding:5px"> ReviewStar </th>
+	        </tr>
+    	</thead>
+	    <tbody>
+			<tr th:if="${reviews.empty}">
+	        	    <td colspan="4"> No Reviews Available </td>
+	     	</tr>
+	        <tr th:each="review : ${reviews}"> 
+		    	<td> <span th:text="${review.reviewId}"></span></td>
+		    	<td> <span th:text="${review.serviceId}"></span></td>
+		    	<td> <span th:text="${review.customerEmail}"></span></td>
+		    	<td> <span th:text="${review.reviewDescription}"></span></td>
+		    	<td> <span th:text="${review.reviewStar}"></span></td> 
+	        </tr>
+	    </tbody>
+	</table>
+	 
+	</body>
+</html>
