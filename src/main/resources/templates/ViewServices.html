@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Service Provider</title>
+<style>
+table, td, th {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table, tr{
+	margin-left:270px;
+	border-collapse: collapse;
+}
+tr{
+	padding:5px;
+}
+</style>
+</head>
+<body>
+	<h1 style="text-align:center;">SERVICE HOME PAGE</h1>
+	<hr>
+	<ul style="list-style-type: none; text-align:center;">
+	  <li>
+	  	<a href="my-home-page" th:href="@{~/my-home-page/{service-provider-id}(service-provider-id=${userID})}">Home</a> &nbsp; &nbsp; &nbsp; 
+		<a href="view-all-orders" th:href="@{/view-all-orders/{service-provider-id}(service-provider-id=${userID})}">Order</a> &nbsp; &nbsp; &nbsp;
+		<a href="my-profile" th:href="@{~/my-profile/{service-provider-id}(service-provider-id=${userID})}">MyProfile</a> &nbsp; &nbsp; &nbsp;
+	  </li>
+	 </ul> 
+	 <hr style="width:60%;" />
+	 <h2 style="text-align: left; margin-left:270px;"> My Services </h2>
+	 <table>
+    	<thead >
+	        <tr>
+	            <th style = "width:150px; text-align:center; padding:5px"> Service ID </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Service Name </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Service Description </th>
+	            <th style = "width:150px; text-align:center; padding:5px"> Service Price($) </th>
+	        </tr>
+    	</thead>
+	    <tbody>
+			<tr th:if="${services.empty}">
+	        	    <td colspan="4"> No Services Available </td>
+	     	</tr>
+	        <tr th:each="service : ${services}"> 
+		    	<td> <span th:text="${service.serviceID}"></span></td>
+		    	<td> <span th:text="${service.serviceName}"></span></td>
+		    	<td> <span th:text="${service.serviceDescription}"></span></td>
+		    	<td> <span th:text="${service.servicePrice}"></span></td> 
+	        </tr>
+	    </tbody>
+	</table>
+	 
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Service Provider Profile</title>
+</head>
+<body>
+	<h1 style="text-align:center;">MY PROFILE</h1>
+	<hr>
+	<ul style="list-style-type: none; text-align:center;">
+		<li>
+	  		<a href="my-home-page" th:href="@{~/my-home-page/{service-provider-id}(service-provider-id=${userID})}">Home</a> &nbsp; &nbsp; &nbsp; 
+			<a href="view-all-orders" th:href="@{/view-all-orders/{service-provider-id}(service-provider-id=${userID})}">Order</a> &nbsp; &nbsp; &nbsp;
+			<a href="my-profile" th:href="@{~/my-profile/{service-provider-id}(service-provider-id=${userID})}">MyProfile</a> &nbsp; &nbsp; &nbsp;
+	  	</li>
+	</ul> 
+	<hr style="width:60%;" />
+	<ul style="list-style-type: none;">
+		<li><h2 style="text-align: left; margin-left:270px;"> Profile </h2></li>
+   	</ul>
+    
+    <table style="margin-left:310px;">
+    	<tr>
+    		<td> <b> First Name: </b> </td>
+    		<td th:text = "${profile.firstName}"> </td>
+    	</tr>
+		<tr>
+    		<td> <b> Last Name: </b> </td>
+    		<td th:text = "${profile.lastName}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Category: </b> </td>
+    		<td th:text = "${profile.category}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Service Description: </b> </td>
+    		<td th:text = "${profile.serviceDescription}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Email ID: </b> </td>
+    		<td th:text = "${profile.email}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Contact Number: </b> </td>
+    		<td th:text = "${profile.contactNumber}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Apartment Number: </b> </td>
+    		<td th:text = "${profile.apartmentNumber}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Street Name: </b> </td>
+    		<td th:text = "${profile.streetName}"> </td>
+    	</tr>
+		<tr>
+    		<td> <b> City: </b> </td>
+    		<td th:text = "${profile.city}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Zipcode: </b> </td>
+    		<td th:text = "${profile.zipcode}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Province: </b> </td>
+    		<td th:text = "${profile.province}"> </td>
+    	</tr>
+    	<tr>
+    		<td> <b> Country: </b> </td>
+    		<td th:text = "${profile.country}"> </td>
+    	</tr>
+	</table>
+</body>
+</html>
