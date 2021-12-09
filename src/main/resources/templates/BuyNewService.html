@@ -21,7 +21,7 @@ h1 {
     <ul class="list-group list-group-horizontal">
         <li class="list-group-item">
             <a th:href="@{/view-customer-home}">Home</a> &nbsp; &nbsp; &nbsp;
-            <a th:href="@{/buy-serviceForCustomers}">Buy Service</a> &nbsp; &nbsp; &nbsp;
+            <a th:href="@{/buy-service}">Buy Service</a> &nbsp; &nbsp; &nbsp;
             <a th:href="@{/view-customer-offers}">Offers</a> &nbsp; &nbsp; &nbsp;
             <a th:href="@{/view-customer-orders}">Orders</a> &nbsp; &nbsp; &nbsp;
             <a th:href="@{/view-customer-profile}">Profile</a>
@@ -41,14 +41,14 @@ h1 {
         </tr>
         </thead>
         <tbody>
-        <form th:each="serviceForCustomers: ${serviceForCustomersList}" th:action="@{/pay-serviceForCustomers/}+${serviceForCustomers.serviceID}" method="post">
+        <form th:each="service: ${serviceList}" th:action="@{/pay-serviceForCustomers/}+${serviceForCustomers.serviceID}" method="post">
 
             <tr>
-                <td th:text="${serviceForCustomers.serviceName}" />
-                <td th:text="${serviceForCustomers.serviceDescription}" />
-                <td th:text="${serviceForCustomers.servicePrice}" />
+                <td th:text="${service.serviceName}" />
+                <td th:text="${service.serviceDescription}" />
+                <td th:text="${service.servicePrice}" />
 
-                <input type="hidden" th:value="${serviceForCustomers.serviceID}" name="id" />
+                <input type="hidden" th:value="${service.serviceID}" name="id" />
 
                 <td>
 

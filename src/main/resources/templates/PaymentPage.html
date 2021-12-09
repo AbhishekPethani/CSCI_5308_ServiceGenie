@@ -27,9 +27,9 @@ h1 {
         </thead>
         <tbody>
         <tr>
-            <td th:text="${serviceForCustomers.serviceName}"/>
-            <td th:text="${serviceForCustomers.serviceDescription}"/>
-            <td th:text="${serviceForCustomers.servicePrice}"/>
+            <td th:text="${service.serviceName}"/>
+            <td th:text="${service.serviceDescription}"/>
+            <td th:text="${service.servicePrice}"/>
         </tr>
         </tbody>
     </table>
@@ -41,12 +41,12 @@ h1 {
         <div class="col-12" style="display:flex;">
 
             <p>Service Charge : </p>
-            <p th:text="${serviceForCustomers.servicePrice}"></p>
+            <p th:text="${service.servicePrice}"></p>
         </div>
 
         <div class="col-12" style="display:flex;">
             <p>Tax : </p>
-            <p th:text="${finalAmount}-${serviceForCustomers.servicePrice}"></p>
+            <p th:text="${finalAmount}-${service.servicePrice}"></p>
         </div>
 
         <div class="col-12" style="display:flex;flex-direction:row;">
@@ -59,9 +59,9 @@ h1 {
         <div class="col-12" style="display:flex;flex-direction:row;">
             <p>Coupon code:</p>
             <br>
-            <form class="form-inline" th:action="@{/applyCoupon/}+${serviceForCustomers.serviceID}" method="post">
+            <form class="form-inline" th:action="@{/applyCoupon/}+${service.serviceID}" method="post">
                 <div class="form-group mx-sm-3 mb-2">
-                    <input type="hidden" th:value="${serviceForCustomers.serviceID}" name="serviceID"/>
+                    <input type="hidden" th:value="${service.serviceID}" name="serviceID"/>
                     <input type="text" class="form-control" placeholder="Coupon code"
                             name="code" id="code">
                 </div>
@@ -73,13 +73,13 @@ h1 {
     </div>
 
     <div>
-        <form th:action="@{/buyService/}+${serviceForCustomers.serviceID}" method="post">
+        <form th:action="@{/buyService/}+${service.serviceID}" method="post">
             <input type="hidden" th:value="${finalAmount}" name="final_amount"/>
             <input type="submit" value="Pay" class="btn btn-success mb-2"/>
         </form>
     </div>
     <div>
-        <form th:action="@{/buy-serviceForCustomers/}" method="get">
+        <form th:action="@{/buy-service}" method="get">
             <button type="submit" class="btn btn-success" >Go Back</button>
         </form>
     </div>
